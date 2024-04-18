@@ -2,7 +2,7 @@ require('dotenv').config()
 import cors from 'cors'
 import morgan from 'morgan'
 import express from 'express'
-import { connectDB } from './src/config/db'
+import { connectDB } from './config/db'
 import { rateLimit } from 'express-rate-limit'
 
 // Import app routes
