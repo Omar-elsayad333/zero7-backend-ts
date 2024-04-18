@@ -3,6 +3,7 @@ import cors from 'cors'
 import morgan from 'morgan'
 import express from 'express'
 import { connectDB } from './src/config/db'
+import { rateLimit } from 'express-rate-limit'
 
 // Import app routes
 // const userRoutes = require("./src/routes/user");
@@ -22,6 +23,17 @@ const app = express()
 app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+  standardHeaders: 'draft-7', // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+  // store: ... , // Redis, Memcached, etc. See below.
+})
+
+// apply rate limiter to all requests
+app.use(limiter)
 
 // User routes
 // app.use(`${process.env.BASE_API_V}/roles`, roleRoutes);

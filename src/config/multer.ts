@@ -1,5 +1,5 @@
-const multer = require('multer')
-const utils = require('../utils')
+import multer from 'multer'
+import { generateFileExt, generateUniqueSuffix } from '../utils'
 
 // Storing files on disk storage
 const storage = multer.diskStorage({
@@ -7,8 +7,8 @@ const storage = multer.diskStorage({
     cb(null, 'src/public/images')
   },
   filename: function (req, file, cb) {
-    const fileExt = utils.fileExt(file)
-    const uniqueSuffix = utils.uniqueSuffix(fileExt)
+    const fileExt = generateFileExt(file)
+    const uniqueSuffix = generateUniqueSuffix(fileExt)
     cb(null, file.fieldname + '-' + uniqueSuffix)
   },
 })
