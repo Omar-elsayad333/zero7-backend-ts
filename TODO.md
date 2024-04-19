@@ -1,5 +1,3 @@
-- route name
-
 - email confirmation
 
 - folder structure

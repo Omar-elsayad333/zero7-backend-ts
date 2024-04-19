@@ -1,17 +1,16 @@
-const mongoose = require('mongoose')
-import * as express from 'express'
-mongoose.set('strictQuery', true)
+// Mongoose
+import mongoose from 'mongoose'
 
-const connectDB = async (app: express.Application) => {
+// Utils
+import { MONGODB_URI } from '@/utils/secrets'
+
+const connectDB = async () => {
   try {
-    await mongoose.connect(process.env.MONGO_URI)
-
-    // listen for requests
-    app.listen(process.env.PORT, () => {
-      console.log('connected to db & listening on port', process.env.PORT)
-    })
+    const mongoUrl = MONGODB_URI
+    await mongoose.connect(mongoUrl.toString())
   } catch (error) {
-    console.log('error listing')
+    console.log('error listing', error)
+    process.exit(1)
   }
 }
 
