@@ -1,19 +1,18 @@
-// const path = require('path')
-// const fs = require('fs')
+import testRouter from '@/routes/test.route'
+import authRoutes from '@/routes/auth.route'
+import userRoutes from '@/routes/user.route'
 
-// // connect to the "src/routers" directory
-// const routersPath = path.join(__dirname, 'routes')
+const apiSuffix = `/api/${process.env.BASE_API_VERSION}`
 
-// // read all files in the "/src/routers" directory
-// fs.readdirSync(routersPath).forEach((file: any) => {
-//   if (file.endsWith('.js')) {
-//     // dynamically import the router module
-//     const routerModule = require(path.join(routersPath, file))
+const router = (app: any) => {
+  // Test router
+  app.use(`${apiSuffix}/test`, testRouter)
 
-//     // get the "router" object exported by the router module
-//     const router = routerModule.router
+  // Auth router
+  app.use(`${apiSuffix}/auth`, authRoutes)
 
-//     // register the router
-//     app.use(router)
-//   }
-// })
+  // User router
+  app.use(`${apiSuffix}/user`, userRoutes)
+}
+
+export default router
