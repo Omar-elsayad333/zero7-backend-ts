@@ -1,7 +1,6 @@
-import { db } from '@/config/db'
-import { BadRequestError } from '@/helpers/apiError'
 import testModel from '@/models/test.model'
 import { Request, Response, NextFunction } from 'express'
+import { BadRequestError, UnauthorizedError } from '@/helpers/apiError'
 
 export const test = (req: Request, res: Response, next: NextFunction) => {
   console.log(req)
@@ -27,7 +26,7 @@ export const loginTest = async (req: Request, res: Response, next: NextFunction)
     // Set session data
     req.session.user = { id: 1, username: 'example' }
 
-    res.send('Logged in')
+    res.send(req.session.user)
   } catch (error: any) {
     next(new BadRequestError('Invalid Request', error))
   }
@@ -36,21 +35,19 @@ export const loginTest = async (req: Request, res: Response, next: NextFunction)
 export const profileTest = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const user = req.session.user
+    if (!user) throw new Error('Unauthorized user')
     res.send(`Welcome ${user?.username}`)
   } catch (error: any) {
-    next(new BadRequestError('Invalid Request', error))
+    next(new UnauthorizedError('Unauthorized Request', error))
   }
 }
 
 export const logoutTest = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const user = req.session.user
-    res.send(`Welcome ${user?.username}`)
-
     req.session.destroy((err) => {
       if (err) {
         console.error(err)
-        res.status(500).send('Error logging out')
+        throw new Error(err)
       } else {
         res.send('Logged out')
       }
