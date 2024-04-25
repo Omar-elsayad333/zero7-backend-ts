@@ -3,9 +3,9 @@ import { Request, Response, NextFunction } from 'express'
 import { BadRequestError, UnauthorizedError } from '@/helpers/apiError'
 
 export const test = (req: Request, res: Response, next: NextFunction) => {
-  console.log(req)
+  i18n.setLocale('ar')
 
-  res.json({ message: 'hi' })
+  res.json({ message: res.__('hello') })
 }
 
 export const createTest = async (req: Request, res: Response, next: NextFunction) => {
@@ -15,7 +15,9 @@ export const createTest = async (req: Request, res: Response, next: NextFunction
     // add doc to db
     const gender = await testModel.create({ name, age })
 
+    req.session.user = { name, age }
     res.json(gender)
+    // res.send(req.session.user)
   } catch (error: any) {
     next(new BadRequestError('Invalid Request', error))
   }
