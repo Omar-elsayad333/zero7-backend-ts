@@ -3,22 +3,20 @@ import { UnauthorizedError } from '@/helpers/apiError'
 import { NextFunction, Request, Response } from 'express'
 
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const { authorization } = req.headers
-
-  if (!authorization) {
-    next(new UnauthorizedError('User not authanticted'))
-    // return res.status(401).json({ status: 401, message: 'Not authanticted' })
-  }
-
-  // Verify req token
-  const token = authorization?.split(' ')[1]
-
   try {
-    // const { _id } = jwt.verify(token, process.env.SECRET)
-    // if (!_id) {
-    //   throw new Error('No Id')
-    // }
+    const { authorization } = req.headers
 
+    if (!authorization) next(new UnauthorizedError('User not authorized'))
+
+    // Verify req token
+    const JwtSecret = process.env.JWT_SECRET
+    const token = authorization?.split(' ')[1]
+    const tokenPayload = token && JwtSecret && jwt.verify(token, JwtSecret)
+
+    console.log(tokenPayload)
+
+    // if (!_id) next(new UnauthorizedError('User not authorized'))
+    // req.userId
     // req.token = token
     next()
   } catch (error) {

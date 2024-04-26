@@ -4,6 +4,8 @@ import { BadRequestError, UnauthorizedError } from '@/helpers/apiError'
 
 export const test = (req: Request, res: Response, next: NextFunction) => {
   try {
+    console.log('omar')
+
     res.json({ message: res.__('test.name') })
   } catch (error) {
     res.json({ message: error })
