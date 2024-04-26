@@ -3,9 +3,11 @@ import { Request, Response, NextFunction } from 'express'
 import { BadRequestError, UnauthorizedError } from '@/helpers/apiError'
 
 export const test = (req: Request, res: Response, next: NextFunction) => {
-  i18n.setLocale('ar')
-
-  res.json({ message: res.__('hello') })
+  try {
+    res.json({ message: res.__('test.name') })
+  } catch (error) {
+    res.json({ message: error })
+  }
 }
 
 export const createTest = async (req: Request, res: Response, next: NextFunction) => {

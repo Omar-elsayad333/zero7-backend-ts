@@ -4,8 +4,6 @@
 
 - login with google
 
-- translation
-
 - stripe integration
 
 - login with facebook

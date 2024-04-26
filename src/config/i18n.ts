@@ -1,17 +1,21 @@
-import { ConfigurationOptions } from 'i18n'
+import path from 'path'
+import i18n from 'i18n'
 
-const i18nConfig: ConfigurationOptions = {
+i18n.configure({
   // setup some locales - other locales default to en silently
   locales: ['en', 'ar'],
 
   // sets a custom cookie name to parse locale settings from
-  cookie: 'locale',
+  header: 'locale',
 
   // sets a default value
   defaultLocale: 'en',
 
   // where to store json files - defaults to './locales'
-  directory: __dirname + '/locales',
-}
+  directory: path.join(__dirname, '..', 'locales'),
 
-export default i18nConfig
+  // Support for nested translation objects
+  objectNotation: true,
+})
+
+export default i18n

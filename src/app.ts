@@ -8,23 +8,23 @@ import compression from 'compression'
 import errorhandler from 'errorhandler'
 import cookieParser from 'cookie-parser'
 
+// Config
+import '@/config/i18n'
+import { connectDB } from '@/config/db'
+import sessionConfig from '@/config/session'
+import limiterConfig from '@/config/rateLimite'
+
 // Utils
 import { isProd } from '@/utils/secrets'
 
 // Middlewares
 import apiErrorHandler from '@/middlewares/apiErrorHandler'
 
-// Config
-import i18nConfig from '@/i18n'
-import { connectDB } from '@/config/db'
-import sessionConfig from '@/config/session'
-import limiterConfig from '@/config/rateLimite'
-
 // Router
-import router from '@/routes'
+import routes from '@/routes'
 
 // Express app
-const app = express()
+export const app = express()
 
 // Use common 3rd-party middlewares
 app.use(compression())
@@ -43,10 +43,9 @@ app.use(sessionConfig)
 app.use(limiterConfig)
 
 // Apply localization to all API routes
-i18n.configure(i18nConfig)
 app.use(i18n.init)
 
-router(app)
+routes()
 
 // Custom API error handler
 app.use(apiErrorHandler)
