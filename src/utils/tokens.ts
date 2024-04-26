@@ -3,17 +3,17 @@ import jwt from 'jsonwebtoken'
 const jwtSecret = process.env.JWT_SECRET || ''
 
 // Create access token
-const createAccesToken = async (tokenPayload: Record<string, any>) => {
+const createAccesToken = (tokenPayload: Record<string, any>) => {
   return jwt.sign(tokenPayload, jwtSecret, { expiresIn: '1h' })
 }
 
 // Create refresh token
-const createRefreshToken = async (tokenPayload: Record<string, any>) => {
+const createRefreshToken = (tokenPayload: Record<string, any>) => {
   return jwt.sign(tokenPayload, jwtSecret, { expiresIn: '15d' })
 }
 
 // Check the expiretion of access token
-const checkAccessTokenExp = async (accessToken: string) => {
+const checkAccessTokenExp = (accessToken: string) => {
   const decodedAccessToken: any = jwt.decode(accessToken)
 
   if (!decodedAccessToken || !decodedAccessToken.exp) {
@@ -28,7 +28,7 @@ const checkAccessTokenExp = async (accessToken: string) => {
 }
 
 // Check the expiretion of refresh token
-const checkRefreshTokenExp = async (refreshToken: string) => {
+const checkRefreshTokenExp = (refreshToken: string) => {
   const decodedRefreshToken: any = jwt.decode(refreshToken)
 
   if (!decodedRefreshToken || !decodedRefreshToken.exp) {
@@ -43,7 +43,7 @@ const checkRefreshTokenExp = async (refreshToken: string) => {
 }
 
 // Get token expiration date
-const getTokenExpDate = async (token: string) => {
+const getTokenExpDate = (token: string) => {
   const decodedToken: any = jwt.decode(token)
 
   if (!decodedToken || !decodedToken.exp) {
@@ -55,7 +55,7 @@ const getTokenExpDate = async (token: string) => {
   return tokenExpDate
 }
 
-export = {
+export {
   createAccesToken,
   createRefreshToken,
   checkAccessTokenExp,

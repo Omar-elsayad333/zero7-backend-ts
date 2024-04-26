@@ -3,33 +3,37 @@ import mongoose, { Document } from 'mongoose'
 export interface UserDocument extends Document {
   id: string
   name: string
-  firstname: string
-  lastname: string
+  firstName: string
+  lastName: string
   password: string
   email: string
   isAdmin: boolean
   isBanned: boolean
+  tokens: {
+    accessToken: string
+    refreshToken: string
+    accessTokenExpireAt: Date
+    refreshTokenExpireAt: Date
+  }
+  createdAt: string
+  updatedAt: string
 }
 
 const userSchema = new mongoose.Schema(
   {
-    id: {
-      type: String,
-    },
-    name: {
-      type: String,
-    },
     firstName: {
       type: String,
     },
     lastName: {
       type: String,
     },
+    name: {
+      type: String,
+    },
     email: {
       type: String,
       unique: true,
       trim: true,
-      required: true,
       lowercase: true,
     },
     password: {
@@ -44,6 +48,12 @@ const userSchema = new mongoose.Schema(
     isBanned: {
       type: Boolean,
       default: false,
+    },
+    tokens: {
+      accessToken: { type: String },
+      refreshToken: { type: String },
+      accessTokenExpireAt: { type: Date },
+      refreshTokenExpireAt: { type: Date },
     },
   },
   { timestamps: true },
