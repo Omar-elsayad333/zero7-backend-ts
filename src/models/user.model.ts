@@ -12,14 +12,15 @@ export interface UserDocument extends Document {
   lastName: string
   password: string
   email: string
-  isAdmin: boolean
-  isBanned: boolean
   tokens: {
     accessToken: string
     refreshToken: string
     accessTokenExpireAt: Date
     refreshTokenExpireAt: Date
   }
+  isAdmin: boolean
+  isBanned: boolean
+  isVerified: boolean
   media: IMedia[]
   createdAt: string
   updatedAt: string
@@ -49,6 +50,10 @@ const userSchema = new mongoose.Schema(
     media: {
       type: Array,
     },
+    isVerified: {
+      type: Boolean,
+      default: false,
+    },
     isAdmin: {
       type: Boolean,
       required: true,
@@ -69,3 +74,11 @@ const userSchema = new mongoose.Schema(
 )
 
 export default mongoose.model<UserDocument>('User', userSchema)
+
+// const validate = (user) => {
+//   const schema = Joi.object({
+//     name: Joi.string().min(3).max(255).required(),
+//     email: Joi.string().email().required(),
+//   });
+//   return schema.validate(user);
+// };

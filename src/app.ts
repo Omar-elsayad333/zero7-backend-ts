@@ -11,6 +11,7 @@ import cookieParser from 'cookie-parser'
 
 // Config
 import '@/config/i18n'
+import corsConfig from '@/config/cors'
 import { connectDB } from '@/config/db'
 import sessionConfig from '@/config/session'
 import passportConfig from '@/config/passport'
@@ -35,13 +36,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
-app.use(
-  cors({
-    origin: ['http://localhost:3000'],
-    methods: ['GET', 'PUT', 'POST', 'DELETE'],
-    credentials: true, // Allow cookies and credentials
-  }),
-)
+app.use(cors(isProd ? corsConfig : undefined))
 app.use(morgan('dev'))
 
 // Apply express session

@@ -9,7 +9,7 @@ import { createTest, test, loginTest, profileTest, logoutTest } from '@/controll
 const router = express.Router()
 
 router
-  .get('/', authMiddleware, test)
+  .get('/', test)
 
   .post('/create', createTest)
 

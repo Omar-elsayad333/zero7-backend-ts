@@ -2,16 +2,16 @@ import passport from 'passport'
 import { Strategy as GoogleStrategy, Profile, VerifyCallback } from 'passport-google-oauth20'
 
 const clientID = process.env.GOOGLE_CLIENT_ID || ''
-const callbackUrl = process.env.GOOGLE_CALLBACK_URL || ''
+const callbackURL = process.env.GOOGLE_CALLBACK_URL || ''
 const clientSecret = process.env.GOOGLE_CLIENT_SECRET || ''
 
 const passportConfig = () =>
   passport.use(
     new GoogleStrategy(
       {
-        clientID: clientID,
-        clientSecret: clientSecret,
-        callbackURL: callbackUrl,
+        clientID,
+        clientSecret,
+        callbackURL,
       },
       (accessToken: string, refreshToken: string, profile: Profile, done: VerifyCallback) => {
         // Code to handle user authentication and retrieval
