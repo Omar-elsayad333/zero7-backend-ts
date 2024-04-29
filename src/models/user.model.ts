@@ -1,5 +1,10 @@
 import mongoose, { Document } from 'mongoose'
 
+export interface IMedia {
+  path: string
+  name: string
+}
+
 export interface UserDocument extends Document {
   id: string
   name: string
@@ -15,6 +20,7 @@ export interface UserDocument extends Document {
     accessTokenExpireAt: Date
     refreshTokenExpireAt: Date
   }
+  media: IMedia[]
   createdAt: string
   updatedAt: string
 }
@@ -39,6 +45,9 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       minlength: [8, 'Minimum of letter is 8'],
+    },
+    media: {
+      type: Array,
     },
     isAdmin: {
       type: Boolean,

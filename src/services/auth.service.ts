@@ -6,6 +6,7 @@ import userModel, { UserDocument } from '@/models/user.model'
 // Utils
 import { hashPassword } from '@/utils/hash'
 import { createAccesToken, createRefreshToken, getTokenExpDate } from '@/utils/tokens'
+import { IGoogleUser } from '@/types/user'
 
 export const loginService = async (body: { email: string; password: string }) => {
   const { email, password } = body
@@ -74,38 +75,56 @@ export const signupService = async (body: UserDocument) => {
   return 'sign up successfully'
 }
 
-export const socialService = async (body: UserDocument) => {
-  const { firstName, lastName, email, password } = body
+export const socialService = async (body: IGoogleUser) => {
+  const { name, given_name, family_name, email, picture, locale } = body
 
-  if (email) {
-    const emailExists = await userModel.findOne({ email })
-    if (emailExists) {
-      throw new Error('Email already in use')
+  if (!email) throw new Error('No such email')
+
+  const user = await userModel.findOne({ email })
+  if (user) {
+    // login user
+    console.log('user id', user._id)
+
+    const tokens: Record<string, string | Date> = {
+      accessToken: createAccesToken({ _id: user._id }),
+      refreshToken: createRefreshToken({ _id: user._id }),
     }
+    tokens.accessTokenExpireAt = getTokenExpDate(tokens.accessToken as string)
+    tokens.refreshTokenExpireAt = getTokenExpDate(tokens.refreshToken as string)
+
+    user.tokens = tokens as any
+
+    await user.save()
+
+    const responseData = {
+      firstName: user.firstName,
+      lastName: user.lastName,
+      name: user.name,
+      email: user.email,
+      isAdmin: user.isAdmin,
+      isBanned: user.isBanned,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt,
+      tokens: user.tokens,
+    }
+
+    console.log('login')
+
+    return responseData
   }
 
-  const hash = await hashPassword(password, 10)
   const userData = {
-    firstName,
-    lastName,
+    name: name,
+    firstName: given_name,
+    lastName: family_name,
     email,
+    media: [{ name: 'avatar', path: picture }],
     isAdmin: true,
-    password: hash,
-    name: `${firstName} ${lastName}`,
   }
 
+  // create new user
   await userModel.create({ ...userData })
 
+  console.log('signup')
   return 'sign up successfully'
 }
-
-// _json: {
-//   sub: '109974485051537660429',
-//   name: 'Omar Elsayad',
-//   given_name: 'Omar',
-//   family_name: 'Elsayad',
-//   picture: 'https://lh3.googleusercontent.com/a/ACg8ocJ_O80DpS4MrRqyKJi8Chy7ro1EP0sqjLGEquZKQ7CTrocu3nM=s96-c',
-//   email: 'omarelsayad313@gmail.com',
-//   email_verified: true,
-//   locale: 'en-GB'
-// }

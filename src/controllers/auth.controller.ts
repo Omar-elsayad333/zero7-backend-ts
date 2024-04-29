@@ -31,10 +31,12 @@ export const signup = async (req: Request, res: Response, next: NextFunction) =>
 // POST /auth/signup
 export const google = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    // console.log(req.user._json)
+    console.log(req.user._json.email)
     await socialService(req.user._json)
     res.redirect(`${FRONT_URL}`)
   } catch (error: any) {
+    console.log(error)
+
     next(new BadRequestError('Faild to authorize user', error))
   }
 }
