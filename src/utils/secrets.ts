@@ -11,11 +11,19 @@ if (fs.existsSync('.env')) {
   dotenv.config({ path: '.env.example' }) // you can delete this after you create your own .env file!
 }
 export const ENVIRONMENT = process.env.NODE_ENV
+
 export const isProd = ENVIRONMENT === 'production' // Anything else is treated as 'dev'
 
 export const CLIENT_ID = process.env['CLIENT_ID'] as string
+
 export const SESSION_SECRET = process.env['SESSION_SECRET'] as string
+
 export const JWT_SECRET = process.env['JWT_SECRET'] as string
+
+export const FRONT_URL = (
+  isProd ? process.env['FRONT_URL'] : process.env['FRONT_URL_LOCAL']
+) as string
+
 export const MONGODB_URI = (
   isProd ? process.env['MONGODB_URI'] : process.env['MONGODB_URI_LOCAL']
 ) as string

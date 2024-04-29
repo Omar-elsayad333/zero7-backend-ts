@@ -73,3 +73,39 @@ export const signupService = async (body: UserDocument) => {
 
   return 'sign up successfully'
 }
+
+export const socialService = async (body: UserDocument) => {
+  const { firstName, lastName, email, password } = body
+
+  if (email) {
+    const emailExists = await userModel.findOne({ email })
+    if (emailExists) {
+      throw new Error('Email already in use')
+    }
+  }
+
+  const hash = await hashPassword(password, 10)
+  const userData = {
+    firstName,
+    lastName,
+    email,
+    isAdmin: true,
+    password: hash,
+    name: `${firstName} ${lastName}`,
+  }
+
+  await userModel.create({ ...userData })
+
+  return 'sign up successfully'
+}
+
+// _json: {
+//   sub: '109974485051537660429',
+//   name: 'Omar Elsayad',
+//   given_name: 'Omar',
+//   family_name: 'Elsayad',
+//   picture: 'https://lh3.googleusercontent.com/a/ACg8ocJ_O80DpS4MrRqyKJi8Chy7ro1EP0sqjLGEquZKQ7CTrocu3nM=s96-c',
+//   email: 'omarelsayad313@gmail.com',
+//   email_verified: true,
+//   locale: 'en-GB'
+// }

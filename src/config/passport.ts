@@ -1,28 +1,32 @@
 import passport from 'passport'
-import GoogleStrategy from 'passport-google-oauth20'
+import { Strategy as GoogleStrategy, Profile, VerifyCallback } from 'passport-google-oauth20'
 
-passport.use(
-  new GoogleStrategy(
-    {
-      clientID: 'YOUR_CLIENT_ID',
-      clientSecret: 'YOUR_CLIENT_SECRET',
-      callbackURL: '/auth/google/callback',
-    },
-    (accessToken: any, refreshToken: any, profile: any, done: any) => {
-      // Code to handle user authentication and retrieval
-      console.log(accessToken, refreshToken, profile, done)
-    },
-  ),
-)
+const clientID = process.env.GOOGLE_CLIENT_ID || ''
+const callbackUrl = process.env.GOOGLE_CALLBACK_URL || ''
+const clientSecret = process.env.GOOGLE_CLIENT_SECRET || ''
 
-passport.serializeUser((user: any, done: any) => {
-  // Code to serialize user data
-  console.log(user, done)
+const passportConfig = () =>
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: clientID,
+        clientSecret: clientSecret,
+        callbackURL: callbackUrl,
+      },
+      (accessToken: string, refreshToken: string, profile: Profile, done: VerifyCallback) => {
+        // Code to handle user authentication and retrieval
+        return done(null, profile)
+      },
+    ),
+  )
+
+// // Serialize and deserialize  user
+passport.serializeUser<any, any>((user, done: any) => {
+  done(null, user)
 })
 
-passport.deserializeUser((id: any, done: any) => {
-  // Code to deserialize user data
-  console.log(id, done)
+passport.deserializeUser<any, any>((obj, done) => {
+  done(null, obj)
 })
 
-export default passport
+export default passportConfig
