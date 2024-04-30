@@ -1,8 +1,8 @@
+import fs from 'fs'
+import path from 'path'
 import jwt from 'jsonwebtoken'
 import nodemailer from 'nodemailer'
 import { MailOptions } from 'nodemailer/lib/json-transport'
-import path from 'path'
-import fs from 'fs'
 
 const mailer_user = process.env.MAILER_USER || ''
 const mailer_pass = process.env.MAILER_PASS || ''
@@ -27,14 +27,14 @@ const token = jwt.sign(
 
 // point to the template folder
 const htmlTemplate = fs.readFileSync(
-  path.join(__dirname, '..', 'public', 'mailTemplate.html'),
+  path.join(__dirname, '..', 'public', 'mailTemplates', 'confirmationTemplate.html'),
   'utf-8',
 )
 
 const mailConfigurations: MailOptions = {
   // It should be a string of sender/server email
   from: {
-    name: 'omar elsayad',
+    name: 'Zero7',
     address: mailer_user,
   },
 
@@ -46,10 +46,10 @@ const mailConfigurations: MailOptions = {
   // Email template
   html: htmlTemplate
     .replace('<%= recipientName %>', 'ahmed mohamed')
-    .replace('<%= validationLink %>', 'http://localhost:3000/verify/${token}'),
+    .replace('<%= validationLink %>', `http://localhost:3000/verify/${token}`),
 }
 
-const sendMail = async () => {
+const sendMail = async ({ mailTypes }: IMailBase) => {
   try {
     await transporter.sendMail(mailConfigurations)
   } catch (error) {
