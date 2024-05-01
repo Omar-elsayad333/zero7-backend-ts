@@ -1,3 +1,5 @@
+- turn apiErrorHandler to responseHandler
+
 - email confirmation
 
 - sockit io

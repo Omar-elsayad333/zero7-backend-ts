@@ -3,15 +3,17 @@ import { compare } from 'bcrypt'
 // Config
 import userModel, { UserDocument } from '@/models/user.model'
 
+// Types
+import { IGoogleUser } from '@/types/user'
+
 // Utils
 import { hashPassword } from '@/utils/hash'
 import { createAccesToken, createRefreshToken, getTokenExpDate } from '@/utils/tokens'
-import { IGoogleUser } from '@/types/user'
 
 export const loginService = async (body: { email: string; password: string }) => {
   const { email, password } = body
 
-  const user = await userModel.findOne({
+  const user: UserDocument | null = await userModel.findOne({
     $or: [{ email }, { phoneNumber: email }],
   })
 
@@ -22,6 +24,10 @@ export const loginService = async (body: { email: string; password: string }) =>
   const passwordMatch = await compare(password, user.password)
   if (!passwordMatch) {
     throw new Error('Incorrect email or password')
+  }
+
+  if (!user.isVerified) {
+    throw new Error('Email not verified')
   }
 
   // Create new tokens for user

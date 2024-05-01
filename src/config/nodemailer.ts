@@ -31,27 +31,34 @@ const htmlTemplate = fs.readFileSync(
   'utf-8',
 )
 
-const mailConfigurations: MailOptions = {
-  // It should be a string of sender/server email
-  from: {
-    name: 'Zero7',
-    address: mailer_user,
-  },
+const generateMailConfigration = ({
+  name,
+  subject,
+  to,
+  link,
+}: IMailEmailConfirmation): MailOptions => {
+  const mailConfigurations: MailOptions = {
+    // It should be a string of sender/server email
+    from: {
+      name: 'Zero7',
+      address: mailer_user,
+    },
 
-  to: 'kklskull1234@gmail.com, omarelsayad313@gmail.com',
+    to,
 
-  // Subject of Email
-  subject: 'Email Verification',
+    // Subject of Email
+    subject,
 
-  // Email template
-  html: htmlTemplate
-    .replace('<%= recipientName %>', 'ahmed mohamed')
-    .replace('<%= validationLink %>', `http://localhost:3000/verify/${token}`),
+    // Email template
+    html: htmlTemplate.replace('<%= recipientName %>', name).replace('<%= validationLink %>', link),
+  }
+  return mailConfigurations
 }
 
-const sendMail = async ({ mailTypes }: IMailBase) => {
+const sendMail = async ({ name, subject, to, link }: IMailEmailConfirmation) => {
   try {
-    await transporter.sendMail(mailConfigurations)
+    const config = generateMailConfigration({ name, subject, to, link })
+    await transporter.sendMail(config)
   } catch (error) {
     console.log(error)
   }

@@ -1,13 +1,9 @@
-import testModel from '@/models/test.model'
 import { Request, Response, NextFunction } from 'express'
 import { BadRequestError, UnauthorizedError } from '@/helpers/apiError'
-import { createAccesToken } from '@/utils/tokens'
-import userModel from '@/models/user.model'
-import sendMail from '@/config/nodemailer'
 
 export const test = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const data = await sendMail()
+    const data = 'hi from zero7'
     res.json({ message: data })
   } catch (error) {
     res.json({ message: error })
