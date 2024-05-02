@@ -1,13 +1,13 @@
-enum TMailTemplates {
+export enum TMailTemplates {
   mailConfirmation = 'mailConfirmation',
 }
 
-interface IMailBase {
+export interface IMailBase {
   to: string
   name: string
   subject: string
 }
 
-interface IMailEmailConfirmation extends IMailBase {
+export interface IMailEmailConfirmation extends IMailBase {
   link: string
 }

@@ -1,6 +1,13 @@
-import jwt, { JwtPayload } from 'jsonwebtoken'
-import { UnauthorizedError } from '@/helpers/apiError'
 import { NextFunction, Request, Response } from 'express'
+
+// 3rd party libs
+import jwt, { JwtPayload } from 'jsonwebtoken'
+
+// Utils
+import { JWT_SECRET } from '@/utils/secrets'
+
+// Services
+import { UnauthorizedError } from '@/services/response.service'
 
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -9,9 +16,7 @@ const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
     if (!token) return next(new UnauthorizedError('User not authorized'))
 
     // Verify req token
-    const JwtSecret = process.env.JWT_SECRET || ''
-    const decodedToken = jwt.verify(token, JwtSecret) as JwtPayload
-    console.log(decodedToken)
+    const decodedToken = jwt.verify(token, JWT_SECRET) as JwtPayload
 
     if (!decodedToken?._id) return next(new UnauthorizedError('User not authorized'))
 

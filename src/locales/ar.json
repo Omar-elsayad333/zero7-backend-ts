@@ -2,5 +2,13 @@
   "hello": "اهلا",
   "test": {
     "name": "عمر"
+  },
+  "response_messages": {
+    "login_successfully": "تم تسجيل الدخول بنجاح",
+    "sign_up_successfully": "تم انشاء حساب بنجاح",
+    "faild_to_authorize_user": "فشل التحقق من المستخدم",
+    "email_not_verified": "لم يتم التحقق من البريد الإلكتروني",
+    "email_already_in_use": "البريد الاليكتروني قيد الاستخدام",
+    "incorrect_email_or_password": "البريد الأليكتروني أو كلمة مرور غير صحيحة"
   }
 }

@@ -10,9 +10,15 @@ if (fs.existsSync('.env')) {
   logger.debug('Using .env.example file to supply config environment variables')
   dotenv.config({ path: '.env.example' }) // you can delete this after you create your own .env file!
 }
-export const ENVIRONMENT = process.env.NODE_ENV
 
+export const ENVIRONMENT = process.env.NODE_ENV
 export const isProd = ENVIRONMENT === 'production' // Anything else is treated as 'dev'
+
+export const API_VERSION = isProd
+  ? process.env['BASE_API_VERSION']
+  : process.env['BASE_API_VERSION_LOCAL']
+
+export const BASE_URL = isProd ? process.env['BASE_URL'] : process.env['BASE_URL_LOCAL']
 
 export const CLIENT_ID = process.env['CLIENT_ID'] as string
 

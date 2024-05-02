@@ -2,5 +2,13 @@
   "hello": "hi",
   "test": {
     "name": "omar"
+  },
+  "response_messages": {
+    "login_successfully": "Login successfully",
+    "sign_up_successfully": "Sign up successfully",
+    "faild_to_authorize_user": "Faild to authorize user",
+    "email_not_verified": "Email not verified",
+    "email_already_in_use": "Email already in use",
+    "incorrect_email_or_password": "Incorrect email or password"
   }
 }

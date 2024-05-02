@@ -1,14 +1,21 @@
 import { compare } from 'bcrypt'
 
-// Config
+// 3rd party libs
+import jwt, { JwtPayload } from 'jsonwebtoken'
+
+// Models
 import userModel, { UserDocument } from '@/models/user.model'
 
 // Types
 import { IGoogleUser } from '@/types/user'
 
+// Config
+import sendMail from '@/config/nodemailer'
+
 // Utils
 import { hashPassword } from '@/utils/hash'
-import { createAccesToken, createRefreshToken, getTokenExpDate } from '@/utils/tokens'
+import { FRONT_URL, JWT_SECRET } from '@/utils/secrets'
+import { createAccesToken, createUserTokens } from '@/utils/tokens'
 
 export const loginService = async (body: { email: string; password: string }) => {
   const { email, password } = body
@@ -18,25 +25,27 @@ export const loginService = async (body: { email: string; password: string }) =>
   })
 
   if (!user) {
-    throw new Error('Incorrect email or password')
+    throw new Error('response_messages.incorrect_email_or_password')
   }
 
   const passwordMatch = await compare(password, user.password)
   if (!passwordMatch) {
-    throw new Error('Incorrect email or password')
+    throw new Error('response_messages.incorrect_email_or_password')
   }
 
   if (!user.isVerified) {
-    throw new Error('Email not verified')
+    const emailToken = createAccesToken(user._id)
+    await sendMail({
+      name: user.name,
+      to: `${user.email}`,
+      subject: 'Emaid Verification',
+      link: `${FRONT_URL}/verfiy-email/${user.email}/${emailToken}`,
+    })
+    throw new Error('response_messages.email_not_verified')
   }
 
   // Create new tokens for user
-  user.tokens = {
-    accessToken: createAccesToken({ _id: user._id }) as string,
-    refreshToken: createRefreshToken({ _id: user._id }) as string,
-    accessTokenExpireAt: getTokenExpDate(user.tokens.accessToken),
-    refreshTokenExpireAt: getTokenExpDate(user.tokens.refreshToken),
-  }
+  user.tokens = createUserTokens(user._id)
 
   // Save the new tokens to the user
   await user.save()
@@ -62,7 +71,7 @@ export const signupService = async (body: UserDocument) => {
   if (email) {
     const emailExists = await userModel.findOne({ email })
     if (emailExists) {
-      throw new Error('Email already in use')
+      throw new Error('response_messages.email_already_in_use')
     }
   }
 
@@ -76,49 +85,35 @@ export const signupService = async (body: UserDocument) => {
     name: `${firstName} ${lastName}`,
   }
 
-  await userModel.create({ ...userData })
+  const user = await userModel.create({ ...userData })
 
-  return 'sign up successfully'
+  const emailToken = createAccesToken(user._id)
+  await sendMail({
+    to: `${email}`,
+    name: userData.name,
+    subject: 'Emaid Verification',
+    link: `${FRONT_URL}/verfiy-email/${email}/${emailToken}`,
+  })
 }
 
-export const socialService = async (body: IGoogleUser) => {
+export const socialService = async (body: IGoogleUser): Promise<string> => {
   const { name, given_name, family_name, email, picture, locale } = body
 
-  if (!email) throw new Error('No such email')
+  if (!email) throw new Error('response_messages.faild_to_authorize_user')
 
   const user = await userModel.findOne({ email })
   if (user) {
     // login user
-    console.log('user id', user._id)
 
-    const tokens: Record<string, string | Date> = {
-      accessToken: createAccesToken({ _id: user._id }),
-      refreshToken: createRefreshToken({ _id: user._id }),
-    }
-    tokens.accessTokenExpireAt = getTokenExpDate(tokens.accessToken as string)
-    tokens.refreshTokenExpireAt = getTokenExpDate(tokens.refreshToken as string)
-
-    user.tokens = tokens as any
+    const userTokens = createUserTokens(user._id)
+    user.tokens = userTokens
 
     await user.save()
 
-    const responseData = {
-      firstName: user.firstName,
-      lastName: user.lastName,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-      isBanned: user.isBanned,
-      createdAt: user.createdAt,
-      updatedAt: user.updatedAt,
-      tokens: user.tokens,
-    }
-
-    console.log('login')
-
-    return responseData
+    return userTokens.accessToken
   }
 
+  // create new user
   const userData = {
     name: name,
     firstName: given_name,
@@ -128,9 +123,24 @@ export const socialService = async (body: IGoogleUser) => {
     isAdmin: true,
   }
 
-  // create new user
-  await userModel.create({ ...userData })
+  const createdUser = await userModel.create({ ...userData })
+  const userTokens = createUserTokens(createdUser._id)
 
-  console.log('signup')
-  return 'sign up successfully'
+  await createdUser.save()
+
+  return userTokens.accessToken
+}
+
+export const verfiyService = async (email: string, token: string) => {
+  if (!email || !token) throw new Error('response_messages.faild_to_verfiy_user_email')
+
+  const user = await userModel.findOne({ email })
+
+  if (!user) throw new Error('response_messages.faild_to_verfiy_user_email')
+
+  const decodedToken = jwt.verify(token, JWT_SECRET) as JwtPayload
+
+  if (decodedToken._id !== user._id) throw new Error('response_messages.faild_to_verfiy_user_email')
+
+  return 'response_messages.verify_email_successfully'
 }

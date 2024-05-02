@@ -2,6 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import jwt from 'jsonwebtoken'
 import nodemailer from 'nodemailer'
+import { IMailEmailConfirmation } from '@/types/mail'
 import { MailOptions } from 'nodemailer/lib/json-transport'
 
 const mailer_user = process.env.MAILER_USER || ''

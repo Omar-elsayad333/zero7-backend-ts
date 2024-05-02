@@ -7,3 +7,10 @@ export interface IGoogleUser {
   email_verified: boolean
   locale: string
 }
+
+export interface IUserTokens {
+  accessToken: string
+  refreshToken: string
+  accessTokenExpireAt: Date
+  refreshTokenExpireAt: Date
+}

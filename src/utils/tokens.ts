@@ -1,4 +1,8 @@
+// 3rd party libs
 import jwt from 'jsonwebtoken'
+
+// Types
+import { IUserTokens } from '@/types/user'
 
 const jwtSecret = process.env.JWT_SECRET || ''
 
@@ -57,10 +61,22 @@ const getTokenExpDate = (token: string) => {
   return tokenExpDate
 }
 
+const createUserTokens = (_id: string): IUserTokens => {
+  const tokens: Partial<IUserTokens> = {
+    accessToken: createAccesToken({ _id }),
+    refreshToken: createRefreshToken({ _id }),
+  }
+  tokens.accessToken && (tokens.accessTokenExpireAt = getTokenExpDate(tokens.accessToken))
+  tokens.refreshToken && (tokens.refreshTokenExpireAt = getTokenExpDate(tokens.refreshToken))
+
+  return tokens as IUserTokens
+}
+
 export {
   createAccesToken,
   createRefreshToken,
   checkAccessTokenExp,
   checkRefreshTokenExp,
   getTokenExpDate,
+  createUserTokens,
 }

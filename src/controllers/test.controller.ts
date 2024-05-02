@@ -1,5 +1,5 @@
+import { BadRequestError, UnauthorizedError } from '@/services/response.service'
 import { Request, Response, NextFunction } from 'express'
-import { BadRequestError, UnauthorizedError } from '@/helpers/apiError'
 
 export const test = async (req: Request, res: Response, next: NextFunction) => {
   try {

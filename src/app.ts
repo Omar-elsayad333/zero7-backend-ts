@@ -21,7 +21,7 @@ import limiterConfig from '@/config/rateLimite'
 import { isProd } from '@/utils/secrets'
 
 // Middlewares
-import apiErrorHandler from '@/middlewares/apiErrorHandler'
+import responseHandler from '@/middlewares/response.middleware'
 
 // Router
 import routes from '@/routes'
@@ -58,8 +58,8 @@ passportConfig()
 // App routes
 routes()
 
-// Custom API error handler
-app.use(apiErrorHandler)
+// Custom API response handler
+app.use(responseHandler)
 
 // Connect to DB
 connectDB()

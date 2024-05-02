@@ -1,7 +1,6 @@
 import express from 'express'
 
 // Middlewares
-import authMiddleware from '@/middlewares/authMiddleware'
 
 // Controllers
 import { createTest, test, loginTest, profileTest, logoutTest } from '@/controllers/test.controller'

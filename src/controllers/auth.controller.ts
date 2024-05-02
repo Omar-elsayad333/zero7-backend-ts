@@ -4,41 +4,51 @@ import { Request, Response, NextFunction } from 'express'
 import { FRONT_URL } from '@/utils/secrets'
 
 // Services
-import { loginService, signupService, socialService } from '@/services/auth.service'
-
-// Helpers
-import { BadRequestError, UnauthorizedError } from '@/helpers/apiError'
-import { CreatedResponse, SuccessResponse } from '@/helpers/apiResponse'
+import { loginService, signupService, socialService, verfiyService } from '@/services/auth.service'
+import {
+  BadRequestError,
+  CreateResponse,
+  SuccessResponse,
+  UnauthorizedError,
+} from '@/services/response.service'
 
 // POST /auth/login
 export const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const userData = await loginService(req.body)
-    next(new SuccessResponse('login successfully', userData))
+    next(new SuccessResponse('response_messages.login_successfully', userData))
   } catch (error: any) {
-    next(new UnauthorizedError(error.message))
+    next(new UnauthorizedError('response_messages.incorrect_email_or_password', error))
   }
 }
 
 // POST /auth/signup
 export const signup = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const userData = await signupService(req.body)
-    res.json(new CreatedResponse('sign up successfully', userData))
+    await signupService(req.body)
+    next(new CreateResponse('response_messages.sign_up_successfully'))
   } catch (error: any) {
-    next(new BadRequestError('Input is not correct', error))
+    next(new BadRequestError(error.message))
   }
 }
 
-// POST /auth/signup
+// POST /auth/google/callback
 export const google = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    console.log(req.user._json.email)
-    await socialService(req.user._json)
+    const userAccessToken = await socialService(req.user._json)
+    res.cookie('accessToken', userAccessToken)
     res.redirect(`${FRONT_URL}`)
   } catch (error: any) {
-    console.log(error)
+    next(new BadRequestError('response_messages.faild_to_authorize_user', error))
+  }
+}
 
-    next(new BadRequestError('Faild to authorize user', error))
+// GET /auth/verfiy
+export const verfiy = async (req: Request, res: Response, next: NextFunction) => {
+  try {
+    const resMessage = await verfiyService(req.params.email, req.params.token)
+    next(new SuccessResponse(resMessage))
+  } catch (error: any) {
+    next(new BadRequestError(error.message, error))
   }
 }
