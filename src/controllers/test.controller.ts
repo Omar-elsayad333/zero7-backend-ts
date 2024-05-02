@@ -1,8 +1,10 @@
-import { BadRequestError, UnauthorizedError } from '@/services/response.service'
+import { socketIO } from '@/server'
 import { Request, Response, NextFunction } from 'express'
+import { BadRequestError, UnauthorizedError } from '@/services/response.service'
 
 export const test = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    socketIO.emit('new message', 'hi from omar')
     const data = 'hi from zero7'
     res.json({ message: data })
   } catch (error) {
