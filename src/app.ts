@@ -39,11 +39,11 @@ app.use(lusca.xssProtection(true))
 app.use(cors(isProd ? corsConfig : undefined))
 app.use(morgan('dev'))
 
-// Apply express session
-app.use(sessionConfig)
-
 // Apply rate limiter to all requests
 app.use(limiterConfig)
+
+// Apply express session
+app.use(sessionConfig)
 
 // Apply localization to all API routes
 app.use(i18n.init)

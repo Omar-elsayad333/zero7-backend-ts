@@ -1,5 +1,5 @@
 import multer from 'multer'
-import { generateFileExt, generateUniqueSuffix } from '../utils'
+import { generateFileExt, generateUniqueSuffix } from '../utils/generate'
 
 // Storing files on disk storage
 const storage = multer.diskStorage({
