@@ -1,14 +1,25 @@
-import { socketIO } from '@/server'
 import { Request, Response, NextFunction } from 'express'
 import { BadRequestError, UnauthorizedError } from '@/services/response.service'
+import Notification from '@/models/notification.model'
+import { socketIO } from '@/server'
 
 export const test = async (req: Request, res: Response, next: NextFunction) => {
+  // try {
+  //   const data = 'hi from zero7'
+  //   res.json({ message: data })
+  // } catch (error) {
+  //   res.json({ message: error })
+  // }
+
   try {
-    socketIO.emit('new message', 'hi from omar')
-    const data = 'hi from zero7'
-    res.json({ message: data })
+    // const { message, userId } = req.body
+    // const notification = new Notification({ message: , token: '321' })
+    // await notification.save()
+    socketIO.emit('sendNotification', { message: 'from serveer', token: '321' })
+    res.status(201).json('success')
   } catch (error) {
-    res.json({ message: error })
+    console.error(error)
+    res.status(500).json({ error: 'Server error' })
   }
 }
 

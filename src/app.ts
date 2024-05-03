@@ -1,5 +1,6 @@
 import cors from 'cors'
 import i18n from 'i18n'
+import http from 'http'
 import lusca from 'lusca'
 import morgan from 'morgan'
 import express from 'express'
@@ -28,6 +29,7 @@ import routes from '@/routes'
 
 // Express app
 export const app = express()
+const server = http.createServer(app)
 
 // Use common 3rd-party middlewares
 app.use(compression())
@@ -67,4 +69,4 @@ connectDB()
 // Error Handler. Provides full stack - remove for production
 !isProd && app.use(errorhandler())
 
-export default app
+export default server

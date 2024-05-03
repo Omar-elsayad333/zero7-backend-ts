@@ -1,19 +1,32 @@
 import { Socket } from 'socket.io'
 
-// App Socket
-import { socketIO } from '@/server'
+// 3rd party libs
+import jwt, { JwtPayload } from 'jsonwebtoken'
 
-export const socketservices = (socket: Socket) => {
-  console.log('a user connected', socket.id)
+// Models
+import { JWT_SECRET } from '@/utils/secrets'
+
+export default function notificationSocket(socket: Socket) {
+  console.log(`A user connected with id: ${socket.id}`)
 
   socket.on('disconnect', () => {
-    console.log(`user ${socket.id} disconnected`)
+    console.log(`User with id: ${socket.id} disconnected`)
   })
 
-  // Example: Send notification to all clients when a new message is received
-  socket.on('new message', (message: string) => {
-    console.log('got new message')
+  socket.on('sendNotification', async (data) => {
+    try {
+      const notification = new Notification(data)
+      await notification.save()
 
-    socketIO.emit('notification', `New message: ${message}`)
+      const { _id } = jwt.verify(data.token, JWT_SECRET) as JwtPayload
+
+      if (_id) {
+        socket.to(_id).emit('notification', notification)
+      } else {
+        socket.broadcast.emit('notification', { id: socket.id })
+      }
+    } catch (error) {
+      console.error(error)
+    }
   })
 }

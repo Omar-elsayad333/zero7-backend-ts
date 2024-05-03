@@ -1,9 +1,12 @@
 import app from './app'
-import { Server, Socket } from 'socket.io'
+
+import { Server } from 'socket.io'
 
 // Utils
 import { FRONT_URL } from '@/utils/secrets'
-import { socketservices } from './services/socket.service'
+
+// Services
+import notificationSocket from '@/services/socket.service'
 
 const server = app.listen(process.env.PORT, async () => {
   console.log('connected to db & listening on port', process.env.PORT)
@@ -15,8 +18,6 @@ export const socketIO = new Server(server, {
   },
 })
 
-socketIO.on('connection', (socket: Socket) => {
-  socketservices(socket)
-})
+socketIO.on('connection', notificationSocket)
 
 export default server
