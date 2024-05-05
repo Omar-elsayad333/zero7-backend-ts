@@ -9,19 +9,22 @@ import logger from '@/utils/logger'
 // Helpers
 import ApiResponse from '@/services/response.service'
 
-export default function (error: ApiResponse, req: Request, res: Response, next: NextFunction) {
+export default function (
+  createdResponse: ApiResponse,
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
   let errorId = uuidv4()
-  if (error.source) {
-    error.source.id = errorId
-    logger.error(error.source)
-  }
+  const isError = createdResponse.statusCode > 399
 
-  const isError = error.statusCode > 399
+  if (isError) logger.error({ errorId, source: createdResponse.data })
 
-  res.status(error.statusCode).json({
-    ...(isError && { errorId: errorId }),
+  res.status(createdResponse.statusCode).json({
+    ...(isError && { errorId }),
     status: isError ? 'error' : 'success',
-    statusCode: error.statusCode,
-    message: res.__(error.message),
+    statusCode: createdResponse.statusCode,
+    message: res.__(createdResponse.message),
+    ...(createdResponse.data && { data: createdResponse.data }),
   })
 }

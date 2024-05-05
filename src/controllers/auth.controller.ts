@@ -4,7 +4,7 @@ import { Request, Response, NextFunction } from 'express'
 import { FRONT_URL } from '@/utils/secrets'
 
 // Services
-import { loginService, signupService, socialService, verfiyService } from '@/services/auth.service'
+import AuthServices from '@/services/auth.service'
 import {
   BadRequestError,
   CreateResponse,
@@ -15,7 +15,7 @@ import {
 // POST /auth/login
 export const login = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const userData = await loginService(req.body)
+    const userData = await AuthServices.loginService(req.body)
     next(new SuccessResponse('response_messages.login_successfully', userData))
   } catch (error: any) {
     next(new UnauthorizedError('response_messages.incorrect_email_or_password', error))
@@ -25,7 +25,7 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
 // POST /auth/signup
 export const signup = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    await signupService(req.body)
+    await AuthServices.signupService(req.body)
     next(new CreateResponse('response_messages.sign_up_successfully'))
   } catch (error: any) {
     next(new BadRequestError(error.message))
@@ -35,7 +35,7 @@ export const signup = async (req: Request, res: Response, next: NextFunction) =>
 // POST /auth/google/callback
 export const google = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const userAccessToken = await socialService(req.user._json)
+    const userAccessToken = await AuthServices.socialService(req.user._json)
     res.cookie('accessToken', userAccessToken)
     res.redirect(`${FRONT_URL}`)
   } catch (error: any) {
@@ -46,7 +46,7 @@ export const google = async (req: Request, res: Response, next: NextFunction) =>
 // GET /auth/verfiy
 export const verfiy = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const resMessage = await verfiyService(req.params.email, req.params.token)
+    const resMessage = await AuthServices.verfiyService(req.params.email, req.params.token)
     next(new SuccessResponse(resMessage))
   } catch (error: any) {
     next(new BadRequestError(error.message, error))

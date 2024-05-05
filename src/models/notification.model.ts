@@ -1,16 +1,31 @@
-import mongoose, { Document } from 'mongoose'
+import mongoose, { Document, Schema } from 'mongoose'
 
 export interface NotificationDocument extends Document {
+  token: string
+  status: string
   message: string
   userId?: string
 }
 
-const notificationSchema = new mongoose.Schema({
-  message: { type: String, required: true },
-  token: { type: String, required: true },
-  userId: { type: String, required: false },
+const notificationSchema = new Schema({
+  token: {
+    type: String,
+    required: true,
+  },
+  message: {
+    type: String,
+    required: true,
+  },
+  status: {
+    type: String,
+    required: false,
+  },
+  userId: {
+    type: Schema.Types.ObjectId,
+    required: false,
+  },
 })
 
-const Notification = mongoose.model<NotificationDocument>('Notification', notificationSchema)
+const NotificationModel = mongoose.model<NotificationDocument>('Notification', notificationSchema)
 
-export default Notification
+export default NotificationModel

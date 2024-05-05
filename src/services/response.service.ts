@@ -3,7 +3,7 @@
  */
 
 export default abstract class ApiResponse extends Error {
-  constructor(readonly statusCode: number, readonly message: string, readonly source?: IError) {
+  constructor(readonly statusCode: number, readonly message: string, readonly data?: any) {
     super()
   }
 }
@@ -12,43 +12,39 @@ export default abstract class ApiResponse extends Error {
  *  ERROR RESPONSES
  */
 
-interface IError extends Error {
-  id?: string
-}
-
 export class NotFoundError extends ApiResponse {
-  constructor(readonly message: string = 'Not Found', source?: IError) {
-    super(404, message, source)
+  constructor(readonly message: string = 'Not Found', data?: any) {
+    super(404, message, data)
   }
 }
 
 export class ForbiddenError extends ApiResponse {
-  constructor(readonly message: string = 'Forbidden', source?: IError) {
-    super(403, message, source)
+  constructor(readonly message: string = 'Forbidden', data?: any) {
+    super(403, message, data)
   }
 }
 
 export class InternalServerError extends ApiResponse {
-  constructor(readonly message: string = 'Internal Server Error', source?: IError) {
-    super(500, message, source)
+  constructor(readonly message: string = 'Internal Server Error', data?: any) {
+    super(500, message, data)
   }
 }
 
 export class UnauthorizedError extends ApiResponse {
-  constructor(readonly message: string = 'Unauthorized Request', source?: IError) {
-    super(401, message, source)
+  constructor(readonly message: string = 'Unauthorized Request', data?: any) {
+    super(401, message, data)
   }
 }
 
 export class BadRequestError extends ApiResponse {
-  constructor(readonly message: string = 'Bad Request', source?: IError) {
-    super(400, message, source)
+  constructor(readonly message: string = 'Bad Request', data?: any) {
+    super(400, message, data)
   }
 }
 
 export class ValidationError extends ApiResponse {
-  constructor(readonly message: string = 'Bad Request', source?: IError) {
-    super(422, message, source)
+  constructor(readonly message: string = 'Bad Request', data?: any) {
+    super(422, message, data)
   }
 }
 

@@ -17,7 +17,7 @@ import { hashPassword } from '@/utils/hash'
 import { FRONT_URL, JWT_SECRET } from '@/utils/secrets'
 import { createAccesToken, createUserTokens } from '@/utils/tokens'
 
-export const loginService = async (body: { email: string; password: string }) => {
+const loginService = async (body: { email: string; password: string }) => {
   const { email, password } = body
 
   const user: UserDocument | null = await userModel.findOne({
@@ -65,7 +65,7 @@ export const loginService = async (body: { email: string; password: string }) =>
   return responseData
 }
 
-export const signupService = async (body: UserDocument) => {
+const signupService = async (body: UserDocument) => {
   const { firstName, lastName, email, password } = body
 
   if (email) {
@@ -96,7 +96,7 @@ export const signupService = async (body: UserDocument) => {
   })
 }
 
-export const socialService = async (body: IGoogleUser): Promise<string> => {
+const socialService = async (body: IGoogleUser): Promise<string> => {
   const { name, given_name, family_name, email, picture, locale } = body
 
   if (!email) throw new Error('response_messages.faild_to_authorize_user')
@@ -131,7 +131,7 @@ export const socialService = async (body: IGoogleUser): Promise<string> => {
   return userTokens.accessToken
 }
 
-export const verfiyService = async (email: string, token: string) => {
+const verfiyService = async (email: string, token: string) => {
   if (!email || !token) throw new Error('response_messages.faild_to_verfiy_user_email')
 
   const user = await userModel.findOne({ email })
@@ -143,4 +143,11 @@ export const verfiyService = async (email: string, token: string) => {
   if (decodedToken._id !== user._id) throw new Error('response_messages.faild_to_verfiy_user_email')
 
   return 'response_messages.verify_email_successfully'
+}
+
+export default {
+  loginService,
+  signupService,
+  socialService,
+  verfiyService,
 }

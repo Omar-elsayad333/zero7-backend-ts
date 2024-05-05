@@ -1,7 +1,5 @@
-- sockit io
+search for (// Todo:)
 
 - stripe integration
 
 - DTO maping
-
-- login with facebook

@@ -1,22 +1,11 @@
 import { Request, Response, NextFunction } from 'express'
 import { BadRequestError, UnauthorizedError } from '@/services/response.service'
 import Notification from '@/models/notification.model'
-import { socketIO } from '@/server'
+import { sendToRoom } from '@/services/socket.service'
 
 export const test = async (req: Request, res: Response, next: NextFunction) => {
-  // try {
-  //   const data = 'hi from zero7'
-  //   res.json({ message: data })
-  // } catch (error) {
-  //   res.json({ message: error })
-  // }
-
   try {
-    // const { message, userId } = req.body
-    // const notification = new Notification({ message: , token: '321' })
-    // await notification.save()
-    socketIO.emit('sendNotification', { message: 'from serveer', token: '321' })
-    res.status(201).json('success')
+    res.status(200).json('success')
   } catch (error) {
     console.error(error)
     res.status(500).json({ error: 'Server error' })
@@ -25,6 +14,9 @@ export const test = async (req: Request, res: Response, next: NextFunction) => {
 
 export const createTest = async (req: Request, res: Response, next: NextFunction) => {
   try {
+    const { roomId, body } = req.body
+    sendToRoom(roomId, 'event name', body)
+    res.status(201).json('created successfully')
   } catch (error: any) {
     next(new BadRequestError('Invalid Request', error))
   }
