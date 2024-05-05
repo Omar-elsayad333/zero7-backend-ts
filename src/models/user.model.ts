@@ -1,3 +1,4 @@
+import Joi from 'joi'
 import mongoose, { Document } from 'mongoose'
 
 export interface IMedia {
@@ -75,10 +76,11 @@ const userSchema = new mongoose.Schema(
 
 export default mongoose.model<UserDocument>('User', userSchema)
 
-// const validate = (user) => {
-//   const schema = Joi.object({
-//     name: Joi.string().min(3).max(255).required(),
-//     email: Joi.string().email().required(),
-//   });
-//   return schema.validate(user);
-// };
+export const validateLogin = (user: UserDocument) => {
+  const schema = Joi.object({
+    email: Joi.string().email().required(),
+    password: Joi.string().min(8).max(20).required(),
+  })
+
+  return schema.validate(user)
+}
