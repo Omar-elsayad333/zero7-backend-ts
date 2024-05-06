@@ -6,7 +6,7 @@ import { ValidationResult } from 'joi'
 // Services
 import { ValidationError } from '@/services/response.service'
 
-const validate = <T>(schema: (data: T) => ValidationResult<any>) => {
+const validateMiddleware = <T>(schema: (data: T) => ValidationResult<any>) => {
   return async (req: Request, res: Response, next: NextFunction) => {
     const { file } = req
     const data = { ...req.body }
@@ -22,4 +22,4 @@ const validate = <T>(schema: (data: T) => ValidationResult<any>) => {
   }
 }
 
-export default validate
+export default validateMiddleware

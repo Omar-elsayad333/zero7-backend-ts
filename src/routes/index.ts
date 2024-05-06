@@ -6,6 +6,7 @@ import testRouter from '@/routes/test.route'
 import authRoutes from '@/routes/auth.route'
 import userRoutes from '@/routes/user.route'
 import notificationsRoutes from '@/routes/notifications.route'
+import categoriesRoutes from '@/routes/category.route'
 
 const apiSuffix = `/api/${process.env.BASE_API_VERSION}`
 
@@ -21,6 +22,9 @@ const routes = () => {
 
   // Notifications router
   app.use(`${apiSuffix}/notifications`, notificationsRoutes)
+
+  // Categories router
+  app.use(`${apiSuffix}/categories`, categoriesRoutes)
 }
 
 export default routes

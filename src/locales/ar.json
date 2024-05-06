@@ -9,7 +9,13 @@
 		"faild_to_authorize_user": "فشل التحقق من المستخدم",
 		"email_not_verified": "لم يتم التحقق من البريد الإلكتروني",
 		"email_already_in_use": "البريد الاليكتروني قيد الاستخدام",
-		"incorrect_email_or_password": "البريد الأليكتروني أو كلمة مرور غير صحيحة"
+		"incorrect_email_or_password": "البريد الأليكتروني أو كلمة مرور غير صحيحة",
+		"category_already_exist": "الفئة موجودة بالفعل",
+		"user_not_authorized": "المستخدم غير مصرح له"
 	},
-	"": ""
+	"response_status": {
+		"success": "نجح",
+		"error": "خطاء"
+	},
+	"user_not_authorized": "user_not_authorized"
 }

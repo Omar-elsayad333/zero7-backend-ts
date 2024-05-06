@@ -1,10 +1,10 @@
-import { object, string } from 'joi'
+import joi from 'joi'
 import mongoose, { Document, Schema } from 'mongoose'
 
 // Utils
 import { customValidate } from '@/utils/validate'
 
-interface ICategory extends Document {
+export interface ICategoryDocument extends Document {
   name: string
 }
 
@@ -16,13 +16,13 @@ const categorySchema = new Schema({
   },
 })
 
-export default mongoose.model<ICategory>('Category', categorySchema)
+export default mongoose.model<ICategoryDocument>('Category', categorySchema)
 
 /**
  *  Validation schema
  */
-const validationSchema = object({
-  name: string().required(),
+const validationSchema = joi.object({
+  name: joi.string().required(),
 })
 
 const updateSchema = validationSchema.fork(
@@ -31,7 +31,7 @@ const updateSchema = validationSchema.fork(
 )
 
 export function validateSchema(type: 'create' | 'update') {
-  return function (category: ICategory) {
+  return function (category: ICategoryDocument) {
     if (type === 'create') return customValidate(validationSchema, category)
     return customValidate(updateSchema, category)
   }

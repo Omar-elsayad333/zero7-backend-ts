@@ -2,7 +2,7 @@ import express from 'express'
 import passport from 'passport'
 
 // Middlewares
-import validate from '@/middlewares/validate.middleware'
+import validateMiddleware from '@/middlewares/validate.middleware'
 
 // Models
 import { UserDocument, validateSchema } from '@/models/user.model'
@@ -13,9 +13,9 @@ import { google, login, signup, verfiy } from '@/controllers/auth.controller'
 const router = express.Router()
 
 router
-  .post('/login', validate<UserDocument>(validateSchema('login')), login)
+  .post('/login', validateMiddleware<UserDocument>(validateSchema('login')), login)
 
-  .post('/signup', validate<UserDocument>(validateSchema('signup')), signup)
+  .post('/signup', validateMiddleware<UserDocument>(validateSchema('signup')), signup)
 
   .get('/verfiy/:email/:token', verfiy)
 

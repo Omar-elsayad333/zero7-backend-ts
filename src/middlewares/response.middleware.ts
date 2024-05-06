@@ -22,7 +22,7 @@ export default function (
 
   res.status(createdResponse.statusCode).json({
     ...(isError && { errorId }),
-    status: isError ? 'error' : 'success',
+    status: isError ? res.__('response_status.error') : res.__('response_status.success'),
     statusCode: createdResponse.statusCode,
     message: res.__(createdResponse.message),
     ...(createdResponse.data && { data: createdResponse.data }),

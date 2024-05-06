@@ -34,7 +34,7 @@ const loginService = async (body: { email: string; password: string }) => {
   }
 
   if (!user.isVerified) {
-    const emailToken = createAccesToken(user._id)
+    const emailToken = createAccesToken({ _id: user._id })
     await sendMail({
       name: user.name,
       to: `${user.email}`,
@@ -141,6 +141,8 @@ const verfiyService = async (email: string, token: string) => {
   const decodedToken = jwt.verify(token, JWT_SECRET) as JwtPayload
 
   if (decodedToken._id !== user._id) throw new Error('response_messages.faild_to_verfiy_user_email')
+
+  await userModel.findOneAndUpdate({ email }, { isVerified: true })
 
   return 'response_messages.verify_email_successfully'
 }
