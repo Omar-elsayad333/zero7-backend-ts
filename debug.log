@@ -278,3 +278,112 @@
 {"level":"debug","message":"Using .env file to supply config environment variables"}
 {"level":"debug","message":"Logging initialized at debug level"}
 {"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"da9fef5f-629d-4c5d-a7aa-b1ad1c94b069","source":{"_original":{"email":"omar@gmail.com","password":"Omar333#"},"details":[{"context":{"key":"firstName","label":"firstName"},"message":"\"firstName\" is required","path":["firstName"],"type":"any.required"}]}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"64ddcc7d-b141-4b7b-b3bc-e904e18faafc","source":{"_original":{"email":"omar@gmail.com","password":"Omar333#"},"details":[{"context":{"key":"firstName","label":"firstName"},"message":"\"firstName\" is required","path":["firstName"],"type":"any.required"}]}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"94dd3057-49e2-4d9b-ae3c-be2df8b3c260","source":{"_original":{"email":"omar@gmail.com","password":"Omar333#"},"details":[{"context":{"key":"firstName","label":"firstName"},"message":"\"firstName\" is required","path":["firstName"],"type":"any.required"}]}}}
+{"level":"error","message":{"errorId":"1deb075b-db2a-43c6-81ec-64d730fbf713","source":{"_original":{"email":"omar@gmail.com","password":"Omar333#"},"details":[{"context":{"key":"firstName","label":"firstName"},"message":"\"firstName\" is required","path":["firstName"],"type":"any.required"}]}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"8861120d-35d2-417d-b688-097a9b654941","source":{}}}
+{"level":"error","message":{"errorId":"536c7e57-0a48-4b73-b437-8979e4bde238"}}
+{"level":"error","message":{"errorId":"608c35d7-9bb2-46f6-a34e-b6804a3a62a5"}}
+{"level":"error","message":{"errorId":"2ea2bf6c-855f-4ee1-907c-47bd676a5a1d","source":{"_original":{"email":"omar@gmail.com"},"details":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]}}}
+{"level":"error","message":{"errorId":"2d1248d9-b35a-47dc-997d-e8184b7baf28","source":{}}}
+{"level":"error","message":{"errorId":"b0e15f9e-09c1-41ec-9e8b-922a0c9f303b","source":{"_original":{"password":"Omar333#"},"details":[{"context":{"key":"email","label":"email"},"message":"\"email\" is required","path":["email"],"type":"any.required"}]}}}
+{"level":"error","message":{"errorId":"3be15f27-9ee8-480c-8cec-6d447f585c6c","source":{"_original":{"firstName":"omar","lastName":"elsayad"},"details":[{"context":{"key":"email","label":"email"},"message":"\"email\" is required","path":["email"],"type":"any.required"}]}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"388148f4-b7de-4b3b-be48-16d61f31dd24","source":{"_original":{"firstName":"omar"},"details":[{"context":{"key":"lastName","label":"lastName"},"message":"\"lastName\" is required","path":["lastName"],"type":"any.required"}]}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"5eba08d9-4ebd-4b53-82b0-0099ea70413f","source":{"_original":{"firstName":"omar"},"details":[{"context":{"key":"lastName","label":"lastName"},"message":"\"lastName\" is required","path":["lastName"],"type":"any.required"},{"context":{"key":"email","label":"email"},"message":"\"email\" is required","path":["email"],"type":"any.required"},{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"51838b08-1282-4c83-9660-1a7b6657d796","source":{"_original":{"firstName":"omar"},"details":[{"context":{"key":"lastName","label":"lastName"},"message":"\"lastName\" is required","path":["lastName"],"type":"any.required"},{"context":{"key":"email","label":"email"},"message":"\"email\" is required","path":["email"],"type":"any.required"},{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"8327531d-7097-4f46-a0fe-f1247416b793","source":{"_original":{"email":"omar@gmail.com","firstName":"omar","lastName":"elsayad"},"details":[{"context":{"key":"password","label":"password"},"message":"\"password\" is required","path":["password"],"type":"any.required"}]}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"d2e1f9fd-c9e8-49cc-815d-b093f0604ae8","source":["\"password\" is required"]}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"0d0182b9-11b8-420b-879c-5be1d212b184","source":{"errors":[["\"password\" is required"]]}}}
+{"level":"error","message":{"errorId":"52685020-846e-46a4-af9e-8adb66708b84","source":{"errors":[["\"lastName\" is required","\"password\" is required"]]}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"67482097-67a4-4e19-a3bd-7f6a17e07ebc","source":{"errors":["\"lastName\" is required","\"password\" is required"]}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"177c082f-6951-48f6-b138-976a772f2486"}}
+{"level":"error","message":{"errorId":"7f318a04-491e-4214-b5db-3729d75f1c11"}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}

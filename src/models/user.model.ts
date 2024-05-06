@@ -1,5 +1,8 @@
-import Joi from 'joi'
-import mongoose, { Document } from 'mongoose'
+import joi from 'joi'
+import mongoose, { Document, Schema } from 'mongoose'
+
+// Utils
+import { customValidate } from '@/utils/validate'
 
 export interface IMedia {
   path: string
@@ -27,7 +30,7 @@ export interface UserDocument extends Document {
   updatedAt: string
 }
 
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
   {
     firstName: {
       type: String,
@@ -76,11 +79,21 @@ const userSchema = new mongoose.Schema(
 
 export default mongoose.model<UserDocument>('User', userSchema)
 
-export const validateLogin = (user: UserDocument) => {
-  const schema = Joi.object({
-    email: Joi.string().email().required(),
-    password: Joi.string().min(8).max(20).required(),
-  })
+/**
+ *  Validation schema
+ */
+const validationSchema = joi.object({
+  firstName: joi.string().required(),
+  lastName: joi.string().required(),
+  email: joi.string().email().required(),
+  password: joi.string().min(8).max(20).required(),
+})
 
-  return schema.validate(user)
+const loginSchema = validationSchema.fork(['lastName', 'firstName'], (Schema) => Schema.optional())
+
+export function validateSchema(type: 'login' | 'signup') {
+  return function (user: UserDocument) {
+    if (type === 'signup') return customValidate(validationSchema, user)
+    return customValidate(loginSchema, user)
+  }
 }

@@ -13,7 +13,10 @@ const validate = <T>(schema: (data: T) => ValidationResult<any>) => {
     if (file) data[file['fieldname']] = file
 
     const { error } = schema(data)
-    if (error) next(new ValidationError('', error))
+    if (error) {
+      const modifiedError = error.details?.map((item) => item.message)
+      next(new ValidationError('', { errors: modifiedError }))
+    }
 
     next()
   }

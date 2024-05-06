@@ -11,5 +11,6 @@
 		"email_already_in_use": "Email already in use",
 		"incorrect_email_or_password": "Incorrect email or password"
 	},
-	"success": "success"
+	"success": "success",
+	"": ""
 }

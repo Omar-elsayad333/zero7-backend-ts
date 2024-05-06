@@ -5,7 +5,7 @@ import passport from 'passport'
 import validate from '@/middlewares/validate.middleware'
 
 // Models
-import { UserDocument, validateLogin } from '@/models/user.model'
+import { UserDocument, validateSchema } from '@/models/user.model'
 
 // Controllers
 import { google, login, signup, verfiy } from '@/controllers/auth.controller'
@@ -13,9 +13,9 @@ import { google, login, signup, verfiy } from '@/controllers/auth.controller'
 const router = express.Router()
 
 router
-  .post('/login', validate<UserDocument>(validateLogin), login)
+  .post('/login', validate<UserDocument>(validateSchema('login')), login)
 
-  .post('/signup', signup)
+  .post('/signup', validate<UserDocument>(validateSchema('signup')), signup)
 
   .get('/verfiy/:email/:token', verfiy)
 
