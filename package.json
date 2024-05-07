@@ -1,7 +1,7 @@
 {
   "name": "zero7-backend-ts",
   "version": "1.0.0",
-  "description": "",
+  "description": "E-Commerce API",
   "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

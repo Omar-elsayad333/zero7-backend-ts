@@ -18,4 +18,4 @@ const upload = multer({ storage: storage })
 const memoryStorage = multer.memoryStorage()
 const memoryUpload = multer({ storage: memoryStorage })
 
-module.exports = { upload, memoryUpload }
+export { upload, memoryUpload }

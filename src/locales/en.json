@@ -13,7 +13,8 @@
 		"user_not_authorized": "User not authorized",
 		"category_already_exist": "Category already exist",
 		"gender_already_exist": "Gender already exist",
-		"size_already_exist": "Size already exist"
+		"size_already_exist": "Size already exist",
+		"color_already_exist": "response_messages.color_already_exist"
 	},
 	"response_status": {
 		"success": "success",
@@ -21,5 +22,6 @@
 	},
 	"": "",
 	"Expected \"payload\" to be a plain object.": "Expected \"payload\" to be a plain object.",
-	"omar": "omar"
+	"omar": "omar",
+	"Unexpected field": "Unexpected field"
 }

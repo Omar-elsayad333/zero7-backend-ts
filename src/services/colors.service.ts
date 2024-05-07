@@ -1,13 +1,11 @@
 // Models
 import colorModel, { IColorDocument } from '@/models/color.models'
-import { NotFoundError } from './response.service'
 
 const findAllService = async (): Promise<IColorDocument[]> => {
   return colorModel.find()
 }
 
 const findByIdService = async (colorId: string): Promise<IColorDocument | null> => {
-  throw new NotFoundError('omar')
   return colorModel.findById(colorId)
 }
 

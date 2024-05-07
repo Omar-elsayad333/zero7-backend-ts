@@ -34,8 +34,6 @@ const server = http.createServer(app)
 // Use common 3rd-party middlewares
 app.use(compression())
 app.use(cookieParser())
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
 app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
 app.use(cors(isProd ? corsConfig : undefined))
@@ -56,6 +54,9 @@ app.use(passport.session())
 
 // Applay Passport config
 passportConfig()
+
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 
 // App routes
 routes()

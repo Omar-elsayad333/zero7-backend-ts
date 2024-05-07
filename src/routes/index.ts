@@ -10,6 +10,7 @@ import categoriesRoutes from '@/routes/category.route'
 import colorsRoutes from '@/routes/color.route'
 import sizesRoutes from '@/routes/size.route'
 import gendersRoutes from '@/routes/gender.route'
+import productsRoutes from '@/routes/product.route'
 
 const apiSuffix = `/api/${process.env.BASE_API_VERSION}`
 
@@ -37,6 +38,9 @@ const routes = () => {
 
   // Genders router
   app.use(`${apiSuffix}/genders`, gendersRoutes)
+
+  // Products router
+  app.use(`${apiSuffix}/products`, productsRoutes)
 }
 
 export default routes
