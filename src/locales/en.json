@@ -10,13 +10,16 @@
 		"email_not_verified": "Email not verified",
 		"email_already_in_use": "Email already in use",
 		"incorrect_email_or_password": "Incorrect email or password",
+		"user_not_authorized": "User not authorized",
 		"category_already_exist": "Category already exist",
-		"user_not_authorized": "User not authorized"
+		"gender_already_exist": "Gender already exist",
+		"size_already_exist": "Size already exist"
 	},
 	"response_status": {
 		"success": "success",
 		"error": "error"
 	},
+	"": "",
 	"Expected \"payload\" to be a plain object.": "Expected \"payload\" to be a plain object.",
-	"E11000 duplicate key error collection": " zero7-backend.users index: phoneNumber_1 dup key: { phoneNumber: null }"
+	"omar": "omar"
 }

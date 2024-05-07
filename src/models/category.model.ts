@@ -30,7 +30,7 @@ const updateSchema = validationSchema.fork(
   (schema) => schema.optional(), // mark fields as optional
 )
 
-export function validateSchema(type: 'create' | 'update') {
+export function validate(type: 'create' | 'update') {
   return function (category: ICategoryDocument) {
     if (type === 'create') return customValidate(validationSchema, category)
     return customValidate(updateSchema, category)

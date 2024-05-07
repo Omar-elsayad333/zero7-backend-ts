@@ -19,7 +19,12 @@ export const login = async (req: Request, res: Response, next: NextFunction) => 
     next(new SuccessResponse('response_messages.login_successfully', userData))
   } catch (error: any) {
     console.log(error)
-    next(new UnauthorizedError('response_messages.incorrect_email_or_password', error))
+    next(
+      new UnauthorizedError(
+        error.message || 'response_messages.incorrect_email_or_password',
+        error,
+      ),
+    )
   }
 }
 

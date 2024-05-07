@@ -1,10 +1,10 @@
-import { object, string } from 'joi'
+import joi from 'joi'
 import mongoose, { Document, Schema } from 'mongoose'
 
 // Utils
 import { customValidate } from '@/utils/validate'
 
-interface IGender extends Document {
+export interface IGenderDocument extends Document {
   name: string
 }
 
@@ -16,13 +16,13 @@ const genderSchema = new Schema({
   },
 })
 
-export default mongoose.model<IGender>('Gender', genderSchema)
+export default mongoose.model<IGenderDocument>('Gender', genderSchema)
 
 /**
  *  Validation schema
  */
-const validationSchema = object({
-  name: string().required(),
+const validationSchema = joi.object({
+  name: joi.string().required(),
 })
 
 const updateSchema = validationSchema.fork(
@@ -30,8 +30,8 @@ const updateSchema = validationSchema.fork(
   (schema) => schema.optional(), // mark fields as optional
 )
 
-export function validateSchema(type: 'create' | 'update') {
-  return function (gender: IGender) {
+export function validate(type: 'create' | 'update') {
+  return function (gender: IGenderDocument) {
     if (type === 'create') return customValidate(validationSchema, gender)
     return customValidate(updateSchema, gender)
   }

@@ -26,8 +26,8 @@ const updateCategory = async (
   return categoryModel.findOneAndUpdate({ _id: categoryId }, body, { new: true })
 }
 
-const deleteCategory = async (movieId: string): Promise<ICategoryDocument | null> => {
-  return categoryModel.findByIdAndDelete(movieId)
+const deleteCategory = async (categoryId: string): Promise<ICategoryDocument | null> => {
+  return categoryModel.findByIdAndDelete(categoryId)
 }
 
 export default {

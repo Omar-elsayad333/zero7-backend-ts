@@ -7,6 +7,9 @@ import authRoutes from '@/routes/auth.route'
 import userRoutes from '@/routes/user.route'
 import notificationsRoutes from '@/routes/notifications.route'
 import categoriesRoutes from '@/routes/category.route'
+import colorsRoutes from '@/routes/color.route'
+import sizesRoutes from '@/routes/size.route'
+import gendersRoutes from '@/routes/gender.route'
 
 const apiSuffix = `/api/${process.env.BASE_API_VERSION}`
 
@@ -25,6 +28,15 @@ const routes = () => {
 
   // Categories router
   app.use(`${apiSuffix}/categories`, categoriesRoutes)
+
+  // Colors router
+  app.use(`${apiSuffix}/colors`, colorsRoutes)
+
+  // Sizes router
+  app.use(`${apiSuffix}/sizes`, sizesRoutes)
+
+  // Genders router
+  app.use(`${apiSuffix}/genders`, gendersRoutes)
 }
 
 export default routes

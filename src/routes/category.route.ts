@@ -1,7 +1,7 @@
 import express from 'express'
 
 // Models
-import { ICategoryDocument, validateSchema } from '@/models/category.model'
+import { ICategoryDocument, validate } from '@/models/category.model'
 
 // Controllers
 import categoriesController from '@/controllers/categories.controller'
@@ -20,17 +20,15 @@ export default router
   .post(
     '/',
     authMiddleware,
-    validateMiddleware<ICategoryDocument>(validateSchema('create')),
+    validateMiddleware<ICategoryDocument>(validate('create')),
     categoriesController.createCategory,
   )
 
   .patch(
     '/:id',
     authMiddleware,
-    validateMiddleware<ICategoryDocument>(validateSchema('update')),
+    validateMiddleware<ICategoryDocument>(validate('update')),
     categoriesController.updateCategory,
   )
 
   .delete('/:id', authMiddleware, categoriesController.deleteCategory)
-
-router

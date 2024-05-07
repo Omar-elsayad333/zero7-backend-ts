@@ -35,10 +35,10 @@ const loginService = async (body: { email: string; password: string }) => {
 
   if (!user.isVerified) {
     const emailToken = createAccesToken({ _id: user._id })
-    await sendMail({
+    sendMail({
       name: user.name,
       to: `${user.email}`,
-      subject: 'Emaid Verification',
+      subject: 'Email Verification',
       link: `${FRONT_URL}/verfiy-email/${user.email}/${emailToken}`,
     })
     throw new Error('response_messages.email_not_verified')
@@ -75,7 +75,7 @@ const signupService = async (body: UserDocument) => {
     }
   }
 
-  const hash = await hashPassword(password, 10)
+  const hash = await hashPassword(password)
   const userData = {
     firstName,
     lastName,
@@ -87,11 +87,11 @@ const signupService = async (body: UserDocument) => {
 
   const user = await userModel.create({ ...userData })
 
-  const emailToken = createAccesToken(user._id)
-  await sendMail({
+  const emailToken = createAccesToken({ _id: user._id })
+  sendMail({
     to: `${email}`,
     name: userData.name,
-    subject: 'Emaid Verification',
+    subject: 'Email Verification',
     link: `${FRONT_URL}/verfiy-email/${email}/${emailToken}`,
   })
 }

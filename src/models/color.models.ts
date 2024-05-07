@@ -1,10 +1,10 @@
-import { object, string } from 'joi'
+import joi from 'joi'
 import mongoose, { Document, Schema } from 'mongoose'
 
 // Utils
 import { customValidate } from '@/utils/validate'
 
-interface IColor extends Document {
+export interface IColorDocument extends Document {
   name: string
   hexColor: string
 }
@@ -22,13 +22,14 @@ const colorSchema = new Schema({
   },
 })
 
-export default mongoose.model<IColor>('Color', colorSchema)
+export default mongoose.model<IColorDocument>('Color', colorSchema)
 
 /**
  *  Validation schema
  */
-const validationSchema = object({
-  name: string().required(),
+const validationSchema = joi.object({
+  name: joi.string().required(),
+  hexColor: joi.string().required(),
 })
 
 const updateSchema = validationSchema.fork(
@@ -36,8 +37,8 @@ const updateSchema = validationSchema.fork(
   (schema) => schema.optional(), // mark fields as optional
 )
 
-export function validateSchema(type: 'create' | 'update') {
-  return function (color: IColor) {
+export function validate(type: 'create' | 'update') {
+  return function (color: IColorDocument) {
     if (type === 'create') return customValidate(validationSchema, color)
     return customValidate(updateSchema, color)
   }

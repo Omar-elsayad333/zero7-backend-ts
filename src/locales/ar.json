@@ -1,21 +1,21 @@
 {
-	"hello": "اهلا",
-	"test": {
-		"name": "عمر"
-	},
-	"response_messages": {
-		"login_successfully": "تم تسجيل الدخول بنجاح",
-		"sign_up_successfully": "تم انشاء حساب بنجاح",
-		"faild_to_authorize_user": "فشل التحقق من المستخدم",
-		"email_not_verified": "لم يتم التحقق من البريد الإلكتروني",
-		"email_already_in_use": "البريد الاليكتروني قيد الاستخدام",
-		"incorrect_email_or_password": "البريد الأليكتروني أو كلمة مرور غير صحيحة",
-		"category_already_exist": "الفئة موجودة بالفعل",
-		"user_not_authorized": "المستخدم غير مصرح له"
-	},
-	"response_status": {
-		"success": "نجح",
-		"error": "خطاء"
-	},
-	"user_not_authorized": "user_not_authorized"
+  "hello": "اهلا",
+  "test": {
+    "name": "عمر"
+  },
+  "response_messages": {
+    "login_successfully": "تم تسجيل الدخول بنجاح",
+    "sign_up_successfully": "تم انشاء حساب بنجاح",
+    "faild_to_authorize_user": "فشل التحقق من المستخدم",
+    "email_not_verified": "لم يتم التحقق من البريد الإلكتروني",
+    "email_already_in_use": "البريد الاليكتروني قيد الاستخدام",
+    "incorrect_email_or_password": "البريد الأليكتروني أو كلمة مرور غير صحيحة",
+    "user_not_authorized": "المستخدم غير مصرح له",
+    "color_already_exist": "اللون موجودة بالفعل",
+    "size_already_exist": "المقاس موجودة بالفعل"
+  },
+  "response_status": {
+    "success": "نجح",
+    "error": "خطاء"
+  }
 }

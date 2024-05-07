@@ -10,9 +10,11 @@ import { UserDocument, validateSchema } from '@/models/user.model'
 // Controllers
 import { google, login, signup, verfiy } from '@/controllers/auth.controller'
 
+const FRONT_URL = process.env.FRONT_URL
+
 const router = express.Router()
 
-router
+export default router
   .post('/login', validateMiddleware<UserDocument>(validateSchema('login')), login)
 
   .post('/signup', validateMiddleware<UserDocument>(validateSchema('signup')), signup)
@@ -23,8 +25,6 @@ router
 
   .get(
     '/google/callback',
-    passport.authenticate('google', { failureRedirect: 'http://localhost:3000/login' }),
+    passport.authenticate('google', { failureRedirect: `${FRONT_URL}/login` }),
     google,
   )
-
-export default router

@@ -15,6 +15,8 @@ export default function (
   res: Response,
   next: NextFunction,
 ) {
+  console.log('hi from response')
+
   let errorId = uuidv4()
   const isError = createdResponse.statusCode > 399
 
