@@ -14,7 +14,7 @@ interface ISize {
   quantity: number
 }
 
-interface IColor {
+export interface IColor {
   colorId: string
   sizes: ISize[]
   images: IImage[]

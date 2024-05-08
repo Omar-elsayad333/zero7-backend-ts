@@ -4,6 +4,7 @@ import express from 'express'
 
 // Controllers
 import { createTest, test, loginTest, profileTest, logoutTest } from '@/controllers/test.controller'
+import { upload } from '@/config/multer'
 
 const router = express.Router()
 

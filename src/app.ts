@@ -26,6 +26,7 @@ import responseHandler from '@/middlewares/response.middleware'
 
 // Router
 import routes from '@/routes'
+import { upload } from './config/multer'
 
 // Express app
 export const app = express()
@@ -37,6 +38,8 @@ app.use(cookieParser())
 app.use(lusca.xframe('SAMEORIGIN'))
 app.use(lusca.xssProtection(true))
 app.use(cors(isProd ? corsConfig : undefined))
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
 app.use(morgan('dev'))
 
 // Apply rate limiter to all requests
@@ -54,9 +57,7 @@ app.use(passport.session())
 
 // Applay Passport config
 passportConfig()
-
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+// app.use(upload.none())
 
 // App routes
 routes()

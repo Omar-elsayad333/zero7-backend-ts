@@ -48,8 +48,6 @@ const checkRefreshTokenExp = (refreshToken: string) => {
 
 // Get token expiration date
 const getTokenExpDate = (token: string) => {
-  console.log('user token', token)
-
   const decodedToken: any = jwt.decode(token)
 
   if (!decodedToken || !decodedToken.exp) {

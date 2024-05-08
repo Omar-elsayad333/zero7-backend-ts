@@ -12,7 +12,8 @@
 		"incorrect_email_or_password": "البريد الأليكتروني أو كلمة مرور غير صحيحة",
 		"user_not_authorized": "المستخدم غير مصرح له",
 		"color_already_exist": "اللون موجودة بالفعل",
-		"size_already_exist": "المقاس موجودة بالفعل"
+		"size_already_exist": "المقاس موجودة بالفعل",
+		"category_already_exist": "response_messages.category_already_exist"
 	},
 	"response_status": {
 		"success": "نجح",

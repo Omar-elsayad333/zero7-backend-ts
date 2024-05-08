@@ -14,8 +14,11 @@ export const test = async (req: Request, res: Response, next: NextFunction) => {
 
 export const createTest = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { roomId, body } = req.body
-    sendToRoom(roomId, 'event name', body)
+    const { body } = req
+
+    console.log(req)
+
+    // sendToRoom(roomId, 'event name', body)
     res.status(201).json('created successfully')
   } catch (error: any) {
     next(new BadRequestError('Invalid Request', error))

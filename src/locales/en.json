@@ -14,7 +14,8 @@
 		"category_already_exist": "Category already exist",
 		"gender_already_exist": "Gender already exist",
 		"size_already_exist": "Size already exist",
-		"color_already_exist": "response_messages.color_already_exist"
+		"color_already_exist": "response_messages.color_already_exist",
+		"product_already_exist": "response_messages.product_already_exist"
 	},
 	"response_status": {
 		"success": "success",
@@ -23,5 +24,9 @@
 	"": "",
 	"Expected \"payload\" to be a plain object.": "Expected \"payload\" to be a plain object.",
 	"omar": "omar",
-	"Unexpected field": "Unexpected field"
+	"Unexpected field": "Unexpected field",
+	"Cannot read properties of null (reading '1')": "Cannot read properties of null (reading '1')",
+	"Unexpected end of form": "Unexpected end of form",
+	"files is not iterable": "files is not iterable",
+	"Product validation failed": " colors.0.images.0.url: Path `url` is required."
 }

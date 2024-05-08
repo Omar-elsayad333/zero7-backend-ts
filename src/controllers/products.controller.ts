@@ -30,8 +30,6 @@ export const findById = async (req: Request, res: Response, next: NextFunction) 
 export const createProduct = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { body, files } = req
-    console.log('body', body)
-    console.log(files)
 
     const product = await ProductsServices.createProduct(body, files)
     next(new CreateResponse('', product))

@@ -23,8 +23,8 @@ export default router
   .post(
     '/',
     authMiddleware,
+    memoryUpload.any(),
     // validateMiddleware<IProductDocument>(validate('create')),
-    memoryUpload.array('colors.images.url', 3),
     productsController.createProduct,
   )
 
