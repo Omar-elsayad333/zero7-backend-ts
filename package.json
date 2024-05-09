@@ -2,12 +2,12 @@
   "name": "zero7-backend-ts",
   "version": "1.0.0",
   "description": "E-Commerce API",
-  "main": "src/server.js",
+  "main": "index.ts",
   "scripts": {
     "build": "npx tsc",
-    "start": "node src/server.ts",
+    "start": "node index.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon -r tsconfig-paths/register src/server.ts"
+    "dev": "nodemon -r tsconfig-paths/register index.ts"
   },
   "keywords": [],
   "author": "",

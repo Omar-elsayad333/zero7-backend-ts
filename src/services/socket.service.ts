@@ -4,7 +4,7 @@ import { Socket } from 'socket.io'
 import jwt, { JwtPayload } from 'jsonwebtoken'
 
 // Socket server
-import { socketIO } from '@/server'
+import { socketIO } from '../..'
 
 // Utils
 import { JWT_SECRET } from '@/utils/secrets'

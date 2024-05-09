@@ -1,4 +1,4 @@
-import app from './app'
+import app from '@/app'
 
 // 3rd party libraries
 import { Server } from 'socket.io'
