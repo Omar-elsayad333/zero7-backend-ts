@@ -5,10 +5,17 @@
   "main": "server.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc",
+    "build": "rimraf dist && tsc",
     "start": "node src/server.ts",
-    "dev": "nodemon -r tsconfig-paths/register src/server.ts"
+    "dev": "nodemon -r tsconfig-paths/register src/server.ts",
+    "ts.check": "tsc --project tsconfig.json",
+    "add-build": "git add dist"
   },
+  "pre-commit": [
+    "ts.check",
+    "build",
+    "add-build"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
