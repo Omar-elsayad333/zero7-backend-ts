@@ -1,5 +1,5 @@
 import 'tsconfig-paths/register'
-import app from './app'
+import app from './src/app'
 
 // 3rd party libraries
 import { Server } from 'socket.io'
