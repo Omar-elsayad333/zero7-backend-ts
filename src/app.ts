@@ -26,7 +26,6 @@ import responseHandler from '@/middlewares/response.middleware'
 
 // Router
 import routes from '@/routes'
-import { upload } from './config/multer'
 
 // Express app
 export const app = express()
