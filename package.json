@@ -2,7 +2,7 @@
   "name": "zero7-backend-ts",
   "version": "1.0.0",
   "description": "E-Commerce API",
-  "main": "index.ts",
+  "main": "index.js",
   "scripts": {
     "build": "npx tsc",
     "start": "node index.ts",
