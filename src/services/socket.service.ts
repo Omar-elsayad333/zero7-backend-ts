@@ -1,13 +1,13 @@
 import { Socket } from 'socket.io'
 
 // 3rd party libs
-import jwt, { JwtPayload } from 'jsonwebtoken'
+// import jwt, { JwtPayload } from 'jsonwebtoken'
 
 // Socket server
-import { socketIO } from '..'
+import { socketIO } from '../server'
 
 // Utils
-import { JWT_SECRET } from '@/utils/secrets'
+// import { JWT_SECRET } from '@/utils/secrets'
 
 // Socket connection
 export default function notificationSocket(socket: Socket) {
