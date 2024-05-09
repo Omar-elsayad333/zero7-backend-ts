@@ -24,7 +24,7 @@ export default router
     '/',
     authMiddleware,
     memoryUpload.any(),
-    // validateMiddleware<IProductDocument>(validate('create')),
+    validateMiddleware<IProductDocument>(validate('create')),
     productsController.createProduct,
   )
 
