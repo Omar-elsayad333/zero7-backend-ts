@@ -1252,3 +1252,7 @@
 {"level":"debug","message":"Logging initialized at debug level"}
 {"level":"debug","message":"Using .env file to supply config environment variables"}
 {"level":"error","message":{"errorId":"45a4d1d4-a1ba-468f-8c19-4bfd45815365","source":{"code":11000,"errorResponse":{"code":11000,"errmsg":"E11000 duplicate key error collection: zero7-backend.users index: phoneNumber_1 dup key: { phoneNumber: null }","index":0,"keyPattern":{"phoneNumber":1},"keyValue":{"phoneNumber":null}},"index":0,"keyPattern":{"phoneNumber":1},"keyValue":{"phoneNumber":null}}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
