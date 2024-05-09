@@ -1215,3 +1215,40 @@
 {"level":"error","message":{"errorId":"798c8778-9cf8-4f6a-8962-c13479ca74ca","source":{"_message":"Product validation failed","errors":{"colors.0.images.0.url":{"kind":"required","message":"Path `url` is required.","name":"ValidatorError","path":"url","properties":{"message":"Path `url` is required.","path":"url","type":"required"}}},"message":"Product validation failed: colors.0.images.0.url: Path `url` is required.","name":"ValidationError"}}}
 {"level":"debug","message":"Logging initialized at debug level"}
 {"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"4c259eca-022d-4531-80be-9af4d6b9246c"}}
+{"level":"error","message":{"errorId":"477e12c9-1978-4f09-913f-9d1bc6f28dca","source":{"_message":"Product validation failed","errors":{"colors.0.images.0.url":{"kind":"required","message":"Path `url` is required.","name":"ValidatorError","path":"url","properties":{"message":"Path `url` is required.","path":"url","type":"required"}}},"message":"Product validation failed: colors.0.images.0.url: Path `url` is required.","name":"ValidationError"}}}
+{"level":"error","message":{"errorId":"55f5e15f-8ee8-4474-b351-967573c88c5d","source":{"_message":"Product validation failed","errors":{"colors.0.images.0.url":{"kind":"required","message":"Path `url` is required.","name":"ValidatorError","path":"url","properties":{"message":"Path `url` is required.","path":"url","type":"required"}}},"message":"Product validation failed: colors.0.images.0.url: Path `url` is required.","name":"ValidationError"}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"d84ee06a-9b30-475d-a066-103a0f2a6396","source":{}}}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"debug","message":"Logging initialized at debug level"}
+{"level":"debug","message":"Using .env file to supply config environment variables"}
+{"level":"error","message":{"errorId":"45a4d1d4-a1ba-468f-8c19-4bfd45815365","source":{"code":11000,"errorResponse":{"code":11000,"errmsg":"E11000 duplicate key error collection: zero7-backend.users index: phoneNumber_1 dup key: { phoneNumber: null }","index":0,"keyPattern":{"phoneNumber":1},"keyValue":{"phoneNumber":null}},"index":0,"keyPattern":{"phoneNumber":1},"keyValue":{"phoneNumber":null}}}}

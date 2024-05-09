@@ -28,5 +28,8 @@
 	"Cannot read properties of null (reading '1')": "Cannot read properties of null (reading '1')",
 	"Unexpected end of form": "Unexpected end of form",
 	"files is not iterable": "files is not iterable",
-	"Product validation failed": " colors.0.images.0.url: Path `url` is required."
+	"Product validation failed": " colors.0.images.0.url: Path `url` is required.",
+	"field": {
+		"split is not a function": "field.split is not a function"
+	}
 }

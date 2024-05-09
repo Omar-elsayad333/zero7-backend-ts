@@ -1,6 +1,6 @@
 // Models
 import productModel, { IColor, IProductDocument } from '@/models/product.model'
-import { setNestedValue } from '@/utils/helpers'
+import { setValuesInBody } from '@/utils/helpers'
 
 // Utils
 import { uploadMultipleFilesToFirebase } from '@/utils/storage'
@@ -19,10 +19,7 @@ const createProduct = async (
 ): Promise<IProductDocument | null> => {
   const uploadedFiles = files && (await uploadMultipleFilesToFirebase(files, 'products'))
 
-  // fieldname: 'colors[0][images][0][url]'
-  files.forEach((file: any, index: number) => {
-    setNestedValue(body, file.fieldname, uploadedFiles[index])
-  })
+  setValuesInBody(body, files, uploadedFiles)
 
   const productExist = await productModel.findOne({ name: body.name })
   if (productExist) throw new Error('response_messages.product_already_exist')
