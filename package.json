@@ -2,20 +2,13 @@
   "name": "zero7-backend-ts",
   "version": "1.0.0",
   "description": "E-Commerce API",
-  "main": "server.ts",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist && tsc",
+    "build": "npx tsc",
     "start": "node src/server.ts",
-    "dev": "nodemon -r tsconfig-paths/register src/server.ts",
-    "ts.check": "tsc --project tsconfig.json",
-    "add-build": "git add dist"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon -r tsconfig-paths/register src/server.ts"
   },
-  "pre-commit": [
-    "ts.check",
-    "build",
-    "add-build"
-  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
