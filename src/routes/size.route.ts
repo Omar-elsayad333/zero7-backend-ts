@@ -1,14 +1,14 @@
 import express from 'express'
 
 // Models
-import { ISizeDocument, validate } from '@/models/size.models'
+import { ISizeDocument, validate } from '../models/size.models'
 
 // Controllers
-import sizesController from '@/controllers/sizes.controller'
+import sizesController from '../controllers/sizes.controller'
 
 // Middlewares
-import authMiddleware from '@/middlewares/auth.middleware'
-import validateMiddleware from '@/middlewares/validate.middleware'
+import authMiddleware from '../middlewares/auth.middleware'
+import validateMiddleware from '../middlewares/validate.middleware'
 
 const router = express.Router()
 

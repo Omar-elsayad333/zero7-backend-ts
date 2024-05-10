@@ -2,13 +2,13 @@ import express from 'express'
 import passport from 'passport'
 
 // Middlewares
-import validateMiddleware from '@/middlewares/validate.middleware'
+import validateMiddleware from '../middlewares/validate.middleware'
 
 // Models
-import { UserDocument, validateSchema } from '@/models/user.model'
+import { UserDocument, validateSchema } from '../models/user.model'
 
 // Controllers
-import { google, login, signup, verfiy } from '@/controllers/auth.controller'
+import { google, login, signup, verfiy } from '../controllers/auth.controller'
 
 const FRONT_URL = process.env.FRONT_URL
 

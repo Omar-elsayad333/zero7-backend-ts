@@ -2,7 +2,7 @@ import joi from 'joi'
 import mongoose, { Document, Schema } from 'mongoose'
 
 // Utils
-import { customValidate } from '@/utils/validate'
+import { customValidate } from '../utils/validate'
 
 interface IImage {
   url: string

@@ -1,7 +1,7 @@
 import express from 'express'
 
 // Controllers
-import { findAll } from '@/controllers/notification.controller'
+import { findAll } from '../controllers/notification.controller'
 
 const router = express.Router()
 

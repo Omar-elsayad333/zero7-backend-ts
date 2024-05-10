@@ -4,7 +4,7 @@ import { NextFunction, Request, Response } from 'express'
 import { ValidationResult } from 'joi'
 
 // Services
-import { ValidationError } from '@/services/response.service'
+import { ValidationError } from '../services/response.service'
 
 const validateMiddleware = <T>(schema: (data: T) => ValidationResult<any>) => {
   return async (req: Request, res: Response, next: NextFunction) => {

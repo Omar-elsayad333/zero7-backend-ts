@@ -1,16 +1,16 @@
 import { Request, Response, NextFunction } from 'express'
 
 // Utils
-import { FRONT_URL } from '@/utils/secrets'
+import { FRONT_URL } from '../utils/secrets'
 
 // Services
-import AuthServices from '@/services/auth.service'
+import AuthServices from '../services/auth.service'
 import {
   BadRequestError,
   CreateResponse,
   SuccessResponse,
   UnauthorizedError,
-} from '@/services/response.service'
+} from '../services/response.service'
 
 // POST /auth/login
 export const login = async (req: Request, res: Response, next: NextFunction) => {

@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from 'express'
 
 // Services
-import GendersServices from '@/services/genders.service'
-import { BadRequestError, CreateResponse, SuccessResponse } from '@/services/response.service'
+import GendersServices from '../services/genders.service'
+import { BadRequestError, CreateResponse, SuccessResponse } from '../services/response.service'
 
 // GET /genders
 export const findAll = async (req: Request, res: Response, next: NextFunction) => {

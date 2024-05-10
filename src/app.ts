@@ -1,6 +1,5 @@
 import cors from 'cors'
 import i18n from 'i18n'
-import http from 'http'
 import lusca from 'lusca'
 import morgan from 'morgan'
 import express from 'express'
@@ -55,7 +54,6 @@ app.use(passport.session())
 
 // Applay Passport config
 passportConfig()
-// app.use(upload.none())
 
 // App routes
 routes()

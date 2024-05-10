@@ -1,14 +1,14 @@
 import express from 'express'
 
 // Models
-import { IColorDocument, validate } from '@/models/color.models'
+import { IColorDocument, validate } from '../models/color.models'
 
 // Controllers
-import colorsController from '@/controllers/colors.controller'
+import colorsController from '../controllers/colors.controller'
 
 // Middlewares
-import authMiddleware from '@/middlewares/auth.middleware'
-import validateMiddleware from '@/middlewares/validate.middleware'
+import authMiddleware from '../middlewares/auth.middleware'
+import validateMiddleware from '../middlewares/validate.middleware'
 
 const router = express.Router()
 

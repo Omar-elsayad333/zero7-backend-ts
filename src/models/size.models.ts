@@ -2,7 +2,7 @@ import joi from 'joi'
 import mongoose, { Document, Schema } from 'mongoose'
 
 // Utiles
-import { customValidate } from '@/utils/validate'
+import { customValidate } from '../utils/validate'
 
 export interface ISizeDocument extends Document {
   name: string

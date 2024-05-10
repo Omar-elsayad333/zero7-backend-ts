@@ -7,7 +7,7 @@ import jwt, { JwtPayload } from 'jsonwebtoken'
 import { JWT_SECRET } from '../utils/secrets'
 
 // Services
-import { UnauthorizedError } from '@/services/response.service'
+import { UnauthorizedError } from '../services/response.service'
 
 const authMiddleware = (req: Request, res: Response, next: NextFunction) => {
   try {
