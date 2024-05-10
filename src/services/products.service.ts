@@ -1,9 +1,9 @@
 // Models
-import productModel, { IColor, IProductDocument } from '@/models/product.model'
-import { setValuesInBody } from '@/utils/helpers'
+import productModel, { IProductDocument } from '../models/product.model'
 
 // Utils
-import { uploadMultipleFilesToFirebase } from '@/utils/storage'
+import { setValuesInBody } from '../utils/helpers'
+import { uploadMultipleFilesToFirebase } from '../utils/storage'
 
 const findAllService = async (): Promise<IProductDocument[]> => {
   return productModel.find()

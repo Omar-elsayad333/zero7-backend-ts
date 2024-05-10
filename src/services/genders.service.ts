@@ -1,5 +1,5 @@
 // Models
-import genderModel, { IGenderDocument } from '@/models/gender.models'
+import genderModel, { IGenderDocument } from '../models/gender.models'
 
 const findAllService = async (): Promise<IGenderDocument[]> => {
   return genderModel.find()

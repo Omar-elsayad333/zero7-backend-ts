@@ -4,18 +4,18 @@ import { compare } from 'bcrypt'
 import jwt, { JwtPayload } from 'jsonwebtoken'
 
 // Models
-import userModel, { UserDocument } from '@/models/user.model'
+import userModel, { UserDocument } from '../models/user.model'
 
 // Types
-import { IGoogleUser } from '@/types/user'
+import { IGoogleUser } from '../types/user'
 
 // Config
-import sendMail from '@/config/nodemailer'
+import sendMail from '../config/nodemailer'
 
 // Utils
-import { hashPassword } from '@/utils/hash'
-import { FRONT_URL, JWT_SECRET } from '@/utils/secrets'
-import { createAccesToken, createUserTokens } from '@/utils/tokens'
+import { hashPassword } from '../utils/hash'
+import { FRONT_URL, JWT_SECRET } from '../utils/secrets'
+import { createAccesToken, createUserTokens } from '../utils/tokens'
 
 const loginService = async (body: { email: string; password: string }) => {
   const { email, password } = body

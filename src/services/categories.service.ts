@@ -1,5 +1,5 @@
 // Models
-import categoryModel, { ICategoryDocument } from '@/models/category.model'
+import categoryModel, { ICategoryDocument } from '../models/category.model'
 
 const findAllService = async (): Promise<ICategoryDocument[]> => {
   return categoryModel.find()

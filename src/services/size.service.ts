@@ -1,5 +1,5 @@
 // Models
-import sizeModel, { ISizeDocument } from '@/models/size.models'
+import sizeModel, { ISizeDocument } from '../models/size.models'
 
 const findAllService = async (): Promise<ISizeDocument[]> => {
   return sizeModel.find()

@@ -1,5 +1,5 @@
 // Models
-import colorModel, { IColorDocument } from '@/models/color.models'
+import colorModel, { IColorDocument } from '../models/color.models'
 
 const findAllService = async (): Promise<IColorDocument[]> => {
   return colorModel.find()
