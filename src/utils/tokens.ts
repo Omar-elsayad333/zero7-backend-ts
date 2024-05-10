@@ -2,7 +2,7 @@
 import jwt from 'jsonwebtoken'
 
 // Types
-import { IUserTokens } from '@/types/user'
+import { IUserTokens } from '../types/user'
 
 const jwtSecret = process.env.JWT_SECRET || ''
 

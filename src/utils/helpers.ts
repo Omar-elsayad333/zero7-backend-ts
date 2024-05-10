@@ -1,8 +1,7 @@
-type TBodyObject = Record<string, any>
-type TFieldObject = Record<string, any>
+type TObject = Record<string, any>
 
 // Function to set values at nested paths in the body object
-export function setValuesInBody(body: TBodyObject, fields: TFieldObject[], values: any[]): void {
+export function setValuesInBody(body: TObject, fields: TObject[], values: any[]): void {
   // Iterate through each field and value
   fields.forEach((field, index) => {
     // Split the field string to get the keys

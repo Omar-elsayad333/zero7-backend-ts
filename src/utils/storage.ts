@@ -1,6 +1,11 @@
-import { bucket } from '@/config/firebase'
+// 3rd party libraries
 import { getDownloadURL } from 'firebase-admin/storage'
-import { generateFileExt, generateUniqueSuffix } from '@/utils/generate'
+
+// Config
+import { bucket } from '../config/firebase'
+
+// Utils
+import { generateFileExt, generateUniqueSuffix } from '../utils/generate'
 
 const uploadeFileToFirebase = async (file: any, folderPath: string) => {
   const fileExt = generateFileExt(file)
