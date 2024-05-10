@@ -10,7 +10,7 @@ import socketConfig from './src/config/socket'
 // Services
 import notificationSocket from './src/services/socket.service'
 
-const server = app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT, () => {
   console.log('connected to db & listening on port', process.env.PORT)
 })
 
@@ -18,4 +18,4 @@ const server = app.listen(process.env.PORT, () => {
 
 // socketIO.on('connection', notificationSocket)
 
-export default server
+// export default server
