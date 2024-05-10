@@ -4,7 +4,7 @@ import { Socket } from 'socket.io'
 // import jwt, { JwtPayload } from 'jsonwebtoken'
 
 // Socket server
-import { socketIO } from '../../index'
+// import { socketIO } from '../../index'
 
 // Utils
 // import { JWT_SECRET } from '@/utils/secrets'
@@ -26,5 +26,5 @@ export default function notificationSocket(socket: Socket) {
 
 // Send to spcific room
 export const sendToRoom = (roomId: string, eventName: string, body?: string) => {
-  socketIO.to(roomId).emit(eventName, body)
+  // socketIO.to(roomId).emit(eventName, body)
 }
