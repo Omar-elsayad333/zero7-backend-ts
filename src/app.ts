@@ -29,7 +29,6 @@ import routes from './routes'
 
 // Express app
 export const app = express()
-const server = http.createServer(app)
 
 // Use common 3rd-party middlewares
 app.use(compression())
@@ -70,4 +69,4 @@ connectDB()
 // Error Handler. Provides full stack - remove for production
 !isProd && app.use(errorhandler())
 
-export default server
+export default app
