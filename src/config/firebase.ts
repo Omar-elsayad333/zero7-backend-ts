@@ -1,5 +1,6 @@
 import admin, { ServiceAccount } from 'firebase-admin'
-import serviceAccount from './zero7-406120-firebase-adminsdk-atmoz-79c9bba6a5.json' // Download from Firebase Console
+
+const serviceAccount = JSON.parse(process.env.FIREBASE_SECRET || '')
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount as string | ServiceAccount),
