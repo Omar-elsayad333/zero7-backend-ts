@@ -1,4 +1,4 @@
-import 'tsconfig-paths/register'
+// import 'tsconfig-paths/register'
 import app from './src/app'
 
 // 3rd party libraries

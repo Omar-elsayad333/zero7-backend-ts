@@ -1,4 +1,4 @@
-import { FRONT_URL } from '@/utils/secrets'
+import { FRONT_URL } from '../utils/secrets'
 
 const socketConfig = {
   cors: {

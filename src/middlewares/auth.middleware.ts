@@ -4,7 +4,7 @@ import { NextFunction, Request, Response } from 'express'
 import jwt, { JwtPayload } from 'jsonwebtoken'
 
 // Utils
-import { JWT_SECRET } from '@/utils/secrets'
+import { JWT_SECRET } from '../utils/secrets'
 
 // Services
 import { UnauthorizedError } from '@/services/response.service'
