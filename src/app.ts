@@ -1,5 +1,6 @@
 import cors from 'cors'
 import i18n from 'i18n'
+import path from 'path'
 import lusca from 'lusca'
 import morgan from 'morgan'
 import express from 'express'
@@ -60,6 +61,11 @@ routes()
 
 // Custom API response handler
 app.use(responseHandler)
+
+// Route for the home page
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'homeTemplate', 'home.html'))
+})
 
 // Connect to DB
 connectDB()
