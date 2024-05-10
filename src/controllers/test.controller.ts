@@ -1,7 +1,5 @@
 import { Request, Response, NextFunction } from 'express'
-import { BadRequestError, UnauthorizedError } from '@/services/response.service'
-import Notification from '@/models/notification.model'
-import { sendToRoom } from '@/services/socket.service'
+import { BadRequestError, UnauthorizedError } from '../services/response.service'
 
 export const test = async (req: Request, res: Response, next: NextFunction) => {
   try {

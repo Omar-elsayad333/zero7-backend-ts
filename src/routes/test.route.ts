@@ -3,8 +3,13 @@ import express from 'express'
 // Middlewares
 
 // Controllers
-import { createTest, test, loginTest, profileTest, logoutTest } from '@/controllers/test.controller'
-import { upload } from '@/config/multer'
+import {
+  createTest,
+  test,
+  loginTest,
+  profileTest,
+  logoutTest,
+} from '../controllers/test.controller'
 
 const router = express.Router()
 

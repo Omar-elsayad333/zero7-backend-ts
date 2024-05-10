@@ -11,21 +11,21 @@ import errorhandler from 'errorhandler'
 import cookieParser from 'cookie-parser'
 
 // Config
-import '@/config/i18n'
-import corsConfig from '@/config/cors'
-import { connectDB } from '@/config/db'
-import sessionConfig from '@/config/session'
-import passportConfig from '@/config/passport'
-import limiterConfig from '@/config/rateLimite'
+import './config/i18n'
+import corsConfig from './config/cors'
+import { connectDB } from './config/db'
+import sessionConfig from './config/session'
+import passportConfig from './config/passport'
+import limiterConfig from './config/rateLimite'
 
 // Utils
-import { isProd } from '@/utils/secrets'
+import { isProd } from './utils/secrets'
 
 // Middlewares
-import responseHandler from '@/middlewares/response.middleware'
+import responseHandler from './middlewares/response.middleware'
 
 // Router
-import routes from '@/routes'
+import routes from './routes'
 
 // Express app
 export const app = express()

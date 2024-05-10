@@ -5,10 +5,10 @@ import app from './src/app'
 import { Server } from 'socket.io'
 
 // Config
-import socketConfig from '@/config/socket'
+import socketConfig from './src/config/socket'
 
 // Services
-import notificationSocket from '@/services/socket.service'
+import notificationSocket from './src/services/socket.service'
 
 const server = app.listen(process.env.PORT, async () => {
   console.log('connected to db & listening on port', process.env.PORT)

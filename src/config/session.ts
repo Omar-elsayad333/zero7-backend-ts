@@ -5,7 +5,7 @@ import session from 'express-session'
 import MongoStore from 'connect-mongo'
 
 // Utils
-import { MONGODB_URI } from '@/utils/secrets'
+import { MONGODB_URI } from '../utils/secrets'
 
 const mongoUrl = MONGODB_URI
 const sessionSecret = process.env.SESSION_SECRET || ''

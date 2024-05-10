@@ -4,10 +4,10 @@ import { Request, Response, NextFunction } from 'express'
 import { v4 as uuidv4 } from 'uuid'
 
 // Utils
-import logger from '@/utils/logger'
+import logger from '../utils/logger'
 
 // Helpers
-import ApiResponse from '@/services/response.service'
+import ApiResponse from '../services/response.service'
 
 export default function (
   createdResponse: ApiResponse,

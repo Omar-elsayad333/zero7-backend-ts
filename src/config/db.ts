@@ -2,7 +2,7 @@
 import mongoose from 'mongoose'
 
 // Utils
-import { MONGODB_URI } from '@/utils/secrets'
+import { MONGODB_URI } from '../utils/secrets'
 
 const connectDB = async () => {
   try {
