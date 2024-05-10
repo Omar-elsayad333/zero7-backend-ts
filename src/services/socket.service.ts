@@ -4,10 +4,12 @@ import { Socket } from 'socket.io'
 // import jwt, { JwtPayload } from 'jsonwebtoken'
 
 // Socket server
-import { socketIO } from '../../index'
+import app from '../app'
 
 // Utils
 // import { JWT_SECRET } from '@/utils/secrets'
+
+const socketIO = app.get('socket')
 
 // Socket connection
 export default function notificationSocket(socket: Socket) {

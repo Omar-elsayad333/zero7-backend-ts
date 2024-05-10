@@ -14,8 +14,6 @@ const server = app.listen(process.env.PORT, () => {
   console.log('connected to db & listening on port', process.env.PORT)
 })
 
-export const socketIO = new Server(server, socketConfig)
-
+const socketIO = new Server(server, socketConfig)
+app.set('socket', socketIO)
 socketIO.on('connection', notificationSocket)
-
-// export default server
