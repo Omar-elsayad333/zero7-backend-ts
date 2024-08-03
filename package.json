@@ -3,10 +3,9 @@
   "version": "1.0.0",
   "description": "E-Commerce API",
   "main": "index.ts",
-  "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "start": "node index.ts",
+    "start": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon -r tsconfig-paths/register index.ts",
     "vercel-build": "echo hello"
