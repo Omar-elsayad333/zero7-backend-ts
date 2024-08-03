@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "E-Commerce API",
   "main": "index.ts",
+  "type": "module",
   "scripts": {
     "build": "npx tsc",
     "start": "node index.ts",
