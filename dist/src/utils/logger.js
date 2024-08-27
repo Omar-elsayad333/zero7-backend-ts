@@ -9,7 +9,7 @@ const options = {
         new winston_1.default.transports.Console({
             level: process.env.NODE_ENV === 'production' ? 'error' : 'debug',
         }),
-        new winston_1.default.transports.File({ filename: 'debug.log', level: 'debug' }),
+        new winston_1.default.transports.File({ filename: 'src/logs/debug.log', level: 'debug' }),
     ],
 };
 const logger = winston_1.default.createLogger(options);

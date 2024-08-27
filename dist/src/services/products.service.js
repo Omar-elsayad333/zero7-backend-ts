@@ -14,9 +14,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 // Models
 const product_model_1 = __importDefault(require("../models/product.model"));
-// Utils
-const helpers_1 = require("../utils/helpers");
-const storage_1 = require("../utils/storage");
 const findAllService = () => __awaiter(void 0, void 0, void 0, function* () {
     return product_model_1.default.find();
 });
@@ -24,8 +21,8 @@ const findByIdService = (productId) => __awaiter(void 0, void 0, void 0, functio
     return product_model_1.default.findById(productId);
 });
 const createProduct = (body, files) => __awaiter(void 0, void 0, void 0, function* () {
-    const uploadedFiles = files && (yield (0, storage_1.uploadMultipleFilesToFirebase)(files, 'products'));
-    (0, helpers_1.setValuesInBody)(body, files, uploadedFiles);
+    // const uploadedFiles = files && (await uploadMultipleFilesToFirebase(files, 'products'))
+    // setValuesInBody(body, files, uploadedFiles)
     const productExist = yield product_model_1.default.findOne({ name: body.name });
     if (productExist)
         throw new Error('response_messages.product_already_exist');

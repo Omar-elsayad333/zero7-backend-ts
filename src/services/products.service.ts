@@ -3,7 +3,6 @@ import productModel, { IProductDocument } from '../models/product.model'
 
 // Utils
 import { setValuesInBody } from '../utils/helpers'
-import { uploadMultipleFilesToFirebase } from '../utils/storage'
 
 const findAllService = async (): Promise<IProductDocument[]> => {
   return productModel.find()
@@ -17,9 +16,9 @@ const createProduct = async (
   body: IProductDocument,
   files?: any,
 ): Promise<IProductDocument | null> => {
-  const uploadedFiles = files && (await uploadMultipleFilesToFirebase(files, 'products'))
+  // const uploadedFiles = files && (await uploadMultipleFilesToFirebase(files, 'products'))
 
-  setValuesInBody(body, files, uploadedFiles)
+  // setValuesInBody(body, files, uploadedFiles)
 
   const productExist = await productModel.findOne({ name: body.name })
   if (productExist) throw new Error('response_messages.product_already_exist')
